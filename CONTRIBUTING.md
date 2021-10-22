@@ -25,17 +25,10 @@ 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
 15. Enter your username, and paste in your PAT.
 16. If all goes well, your PAT is saved! If not, contact me at [milobanks@rowlandhall.org](mailto:milobanks@rowlandhall.org).
 
-## Bidragande kod (Contributing code)!
-What good is pushing to the central repository when it reject it? You might get an error like then following when pushing:
-```
-! [remote rejected] master -> master (protected branch hook declined)
-error: failed to push some refs to [and so on]...
-```
-
 #### Notera (Note)!
 Please make all your changes on a seperate brach, that describes what you are doing, prefixed with your name (e.g. `isacc-barker-fixing-issue-420`, `david-attenborough-gradle-dep-update`). Don't make these too long though.
 
-### Praktiska kommandon (Handy commands)!
+## Praktiska kommandon (Handy commands)!
 Git has many commands, but some you will use more than others. Here are a select few.
 ```bash
 # Creates a repository, but only on your local computer, not on Github
@@ -134,6 +127,15 @@ isacc-barker-readme-typo(local,origin) -> isacc-barker-readme-type(remote,origin
 ```
 
 All you have to do if submit a PR to the main repository, fetch the changes to your own fork once it goes through, and sync your local repository with `git pull`!
+
+## Bidragande kod (Contributing code)!
+What good is pushing to the central repository when it rejects it? You might get an error like then following when pushing:
+```
+! [remote rejected] master -> master (protected branch hook declined)
+error: failed to push some refs to [and so on]...
+```
+
+You shouldn't have gotten this error if you took my advice, but lets use this as a learning oportunity.
 
 ### Vad är ett förvar (What is a repository)?
 A repository is a group of branches. Thats it. Granted, it also contains metadata about your repository, but it's main purpose is just to hold branches. Branches are the things that contain the files, and by default, the main branch name is "main" (because we are basing this repo of FtcRobotController, and they use the main branch called "master"), we use master instead of main. Main is considered newer, and master is considered [legacy](https://github.com/github/renaming).

@@ -35,6 +35,131 @@ error: failed to push some refs to [and so on]...
 #### Notera (Note)!
 Please make all your changes on a seperate brach, that describes what you are doing, prefixed with your name (e.g. `isacc-barker-fixing-issue-420`, `david-attenborough-gradle-dep-update`). Don't make these too long though.
 
+### Praktiska kommandon (Handy commands)!
+Git has many commands, but some you will use more than others. Here are a select few.
+```bash
+# Creates a repository, but only on your local computer, not on Github
+git init
+
+# Downloads a repository
+git clone <repository>
+
+# Add a file for git to track
+git add <file>
+
+# Stop tracking a file (does not actually delete the file)
+git rm <file>
+
+# Create a commit (a snapshot of the projects currently saved changes)
+git commit -m "your commit message"
+
+# We need to tell git where our remote repository is located. This is what a remote is.
+# Origin is your fork, upstream is the original repository.
+# Create remote
+git remote add <name> <url.git>
+
+# Change url of remote
+git remote set-url <name> <new-url.git>
+
+# Push your changes (you only need to supply the arguments from -u onward the first time)
+git push -u <where to push, origin> <the branch to push from, branch your changes are on>
+
+# Pull changes
+git pull <where to pull, origin> <the branch to pull too, master>
+```
+
+---
+
+Lets take a look at an example on how you might fix a spelling mistake in the README.
+
+First, fork the repository. Go to the official repository [here](https://github.com/Rowland-Hall-Iron-Lions/ARC), and press the fork button in the upper right hand corner. You only need to do this once.
+
+Obviously, you need to grab your forked repository so you have code to work on. You only need to do this once.
+```bash
+git clone https://github.com/Rowland-Hall-Iron-Lions/ARC.git
+cd ARC;
+
+# Here, we do something a bit strange. Origin is the name of the remote for your fork, while upstream is the name of the remote for the main repository. Think of your repository being downstream (changes flow downstream) to you.
+git remote add upstream https://github.com/Rowland-Hall-Iron-Lions/ARC.git
+```
+
+You might be wondering why we don't set the `origin` remote. After all, isn't that our fork? Yes, it is! But since we cloned it from there, our origin is already set up for us. Thanks git!
+
+If this is not your first change, it is **highly recomended** that you fetch the latest changes to your main fork. You can do this from the command line, or from the Github website. On the website, you can click "fetch upsteam", and follow the instructions. If, however, you want to do this from the command line (recommended, as you learn mode), you can do this:
+```bash
+# We are fetching and merging the changes from upstream (the original repository) to your fork. Master is the name of the main branch your fork has.
+git pull upstream master
+
+# If you fetched from upstream on the website, you must do this (overwise, don't)
+git pull origin master
+```
+
+After this, you will want to create a sperate branch for your changes.
+```bash
+# Obviously replace the branch name with <your-username>-<fixing>
+git checkout isacc-barker-readme-typo
+```
+
+Make your changes (maybe correct Rowladn to Rowland), and add the files you changes.
+```bash
+git add .
+```
+
+Create a commit to push.
+```bash
+git commit -m "Fix readme typo."
+```
+
+Set your origins (you only have to do this the first time).
+```bash
+git remote add origin https://github.com/<your-username-where-the-fork-is>/ARC.git
+git remote add upstream https://github.com/Rowland-Hall-Iron-Lions/ARC.git
+```
+
+And push the `isacc-barker-readme-typo` branch!
+```bash
+git push -u isacc-barker-readme-typo origin
+```
+
+If you get an error about not having local changes, fetch the latest changes.
+```bash
+git pull origin isacc-barker-readme-typo 
+```
+
+You may get a merge conflict. Go into all the files, remove all the "merge conflict markers" (discussed later), and add the files again. Create a new commit (maybe "fixed merge conflict"), and try to push again.
+
+You may be wondering, but Author, I don't have the changes I made on my new branch on my master branch! Well, thats still fine. In fact, it's great! You can see from this diagram:
+```
+isacc-barker-readme-typo(local,origin) -> isacc-barker-readme-type(remote,origin) -> master(remote,upstream) -> master(local,origin)
+```
+
+All you have to do if submit a PR to the main repository, fetch the changes to your own fork once it goes through, and sync your local repository with `git pull`!
+
+### Vad är ett förvar (What is a repository)?
+A repository is a group of branches. Thats it. Granted, it also contains metadata about your repository, but it's main purpose is just to hold branches. Branches are the things that contain the files, and by default, the main branch name is "main" (because we are basing this repo of FtcRobotController, and they use the main branch called "master"), we use master instead of main. Main is considered newer, and master is considered [legacy](https://github.com/github/renaming).
+
+### Vad är en gren (What is a branch)?
+Think of a branch as snapshot of your changes. You can switch to a snapshot and write your changes. Whenever you create a new feature or fix something, big or small, you should create a new branch to reflect this. Below is a cheatsheet of handy git branch commands.
+```bash
+# Rename the current branch
+git branch -m <new-name>
+
+# List all branches
+git branch
+
+# Change branches
+git checkout <branch-name>
+
+# Delete a branch
+git branch -d <branch-name>
+
+# Create a branch (and switch to it)
+git checkout -b <new-branch>
+
+# Create a branch (and don't switch to it)
+git branch <new-branch>
+```
+
 ### Vad är en skyddad gren (What is a protected branch)?
 A protected branch is a branch, that is... well... protected. The idea of this is to make sure that the protected branch only has the best code we have to offer. In order to push code into this branch (which people will `clone`), you must fork the repository (you only need to do this once), create a PR (for every *one* major change that you make), get someone to look over your code, and merge it! This may sound complicated, but with a little explanation, it should seem pretty intuitive.
 

@@ -7,7 +7,7 @@
 Before contributing, please read the [CONTRIBUTING.md](https://github.com/Rowland-Hall-Iron-Lions/ARC/blob/master/CONTRIBUTING.md) file.
 
 # Välkommen (Welcome)!
-Why did we greet you in Sweedish? You'll never know, and their will we.
+Why did we greet you in Sweedish? You'll never know, and neither will we.
 
 This repository is based off of the FtcRobotController, and this is where all of our code goes. You can find the code that we wrote inside the `TeamCode/src/main/java/org/firstinspires/ftc/teamcode` directory. From there, there is another README explaining the anotomy and layout of the source code.
 

@@ -1,3 +1,6 @@
+#DS_Store is a hidden file created by MacOS whenever you enteer a folder using finder. Thus, we do not want them in our project
+**/.DS_Store
+
 # Built application files
 *.apk
 *.aar

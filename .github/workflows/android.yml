@@ -1,18 +1,9 @@
 name: Android CI
 
-on:
-  push
-  pull_requet
-#   push:
-#     branches: [ master ]
-#   pull_request:
-#     branches: [ master ]
-  schedule:
-    - cron: '59 23 * * 2,4' # Runs at the end of the day on Tuesday and Thursday
+on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: macos-latest
 
     steps:

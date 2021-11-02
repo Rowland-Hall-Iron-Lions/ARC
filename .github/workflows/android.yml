@@ -5,6 +5,8 @@ on:
 #     branches: [ master ]
 #   pull_request:
 #     branches: [ master ]
+  schedule:
+    - cron: '59 23 * * 2,4' # Runs at the end of the day on Tuesday and Thursday
 
 jobs:
   build:

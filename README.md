@@ -47,4 +47,3 @@ That's it. `gradlew` is a script that downloads Gradle and runs the commands for
 
 ### Lagtränare (Team coach)
 1. Rob Lingstuyl
-

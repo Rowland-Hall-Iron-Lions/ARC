@@ -48,3 +48,5 @@ That's it. `gradlew` is a script that downloads Gradle and runs the commands for
 ### Lagtränare (Team coach)
 1. Rob Lingstuyl
 
+# libOpenCvAndroid453.so
+For Easy Open Cv to work you have to download the libOpenCvAndroid453.so file and copy it to the robot controller; you can find download and further instructions [here](https://github.com/OpenFTC/EasyOpenCV)

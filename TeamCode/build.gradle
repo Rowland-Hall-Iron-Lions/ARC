@@ -10,6 +10,13 @@
 
 
 // Custom definitions may go here
+apply plugin: 'com.android.application'
+
+android {
+    lintOptions {
+        abortOnError false
+    }
+}
 
 // Include common definitions from above.
 apply from: '../build.common.gradle'

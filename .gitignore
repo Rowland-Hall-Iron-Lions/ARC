@@ -12,6 +12,9 @@
 
 !libs/*.aar
 
+# Ignore the file that we are yelled at to ignore
+local.properties
+
 # Files for the ART/Dalvik VM
 *.dex
 

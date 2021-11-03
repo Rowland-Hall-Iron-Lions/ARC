@@ -33,19 +33,19 @@ public class Logging {
             RobotLog.d(getLoggingDateTime() + " DEBUG: " + msg);
     }
 
-    /** Emits a info message. */
+    /** Emits an info message. */
     public static void info(String msg) {
         if (Logging.min.getValue() < LoggingLevel.TRACE.getValue())
             RobotLog.i(getLoggingDateTime() + " INFO: " + msg);
     }
 
-    /** Emits a warning message. */
+    /** Emits an warning message. */
     public static void warning(String msg) {
         if (Logging.min.getValue() < LoggingLevel.TRACE.getValue())
             RobotLog.w(getLoggingDateTime() + " WARN: " + msg);
     }
 
-    /** Emits a error message. */
+    /** Emits an error message. */
     public static void error(String msg) {
         if (Logging.min.getValue() < LoggingLevel.TRACE.getValue())
             RobotLog.e(getLoggingDateTime() + " ERROR: " + msg);

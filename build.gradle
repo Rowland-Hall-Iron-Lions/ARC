@@ -10,19 +10,29 @@
 
 
 // Custom definitions may go here
-
-
-apply plugin: 'com.android.application'
-
-android {
-    lintOptions {
-        abortOnError false
+buildscript {
+    repositories {
+        // Gradle 4.1 and higher include support for Google's Maven repo using
+        // the google() method. And you need to include this repo to download
+        // Android Gradle plugin 3.0.0 or higher.
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.0'
     }
 }
 
 // Include common definitions from above.
-apply from: '../build.common.gradle'
-apply from: '../build.dependencies.gradle'
+apply from: './build.common.gradle'
+apply from: './build.dependencies.gradle'
+
+android {
+    buildToolsVersion "30.0.2"
+    lintOptions {
+        abortOnError false
+    }
+}
 
 dependencies {
     implementation project(':FtcRobotController')

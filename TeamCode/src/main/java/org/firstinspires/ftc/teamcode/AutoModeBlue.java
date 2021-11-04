@@ -76,14 +76,14 @@ public class autoModeBlue extends LinearOpMode {
         while (opModeIsActive()){
             telemetry.addData("Status", "Running");
             telemetry.update();
-            //Check Barcode, for which layer of alliance shipping hub
+            // Check Barcode, for which layer of alliance shipping hub
             bc1.followTrajectory(barcode1);
             sleep(1000);
             bc2.followTrajectory(barcode2);
             sleep(1000);
             bc3.followTrajectory(barcode3);
             sleep(1000);
-            //While the robot is paused, check if duck sits on that spot.
+            // While the robot is paused, check if duck sits on that spot.
             while (!bc1.isBusy() && !bc2.isBusy() && !bc3.isBusy()){
                 double distance = distanceSensor.getDistance(DistanceUnit.CM);
                 // If duck is there, run pickup code.

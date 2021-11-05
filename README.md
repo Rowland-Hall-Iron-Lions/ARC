@@ -50,6 +50,9 @@ sdk install java 11.0.11.hs-adpt
 
 That's it. `gradlew` is a script that downloads Gradle and runs the commands for you, so there's no fuss! This README will be extended to contain instructions on how to run this "binary" from the command line when we figure it out.
 
+### libOpenCvAndroid453.so
+For Easy Open Cv to work you have to download the libOpenCvAndroid453.so file and copy it to the robot controller; you can find download and further instructions [here](https://github.com/OpenFTC/EasyOpenCV)
+
 ## Författare och meriter (Authors and credits)!
 ### Programvaruingenjörer (Software engineers)
 1. Rapheal Andrea
@@ -68,5 +71,3 @@ That's it. `gradlew` is a script that downloads Gradle and runs the commands for
 ### Lagtränare (Team coach)
 1. Rob Lingstuyl
 
-# libOpenCvAndroid453.so
-For Easy Open Cv to work you have to download the libOpenCvAndroid453.so file and copy it to the robot controller; you can find download and further instructions [here](https://github.com/OpenFTC/EasyOpenCV)

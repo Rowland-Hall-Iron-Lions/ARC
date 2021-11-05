@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.webcam;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -11,14 +11,14 @@ import org.openftc.easyopencv.OpenCvWebcam;
 
 
 
-public class WebcamInit {
+public class Webcam {
     // Instantiating webcam object
     OpenCvWebcam webcam;
     // Instantiating opMode object to be defined in constructor and call OpMode methods.
     LinearOpMode opMode;
 
     // Constructor
-    WebcamInit(int cameraMonitorViewId, LinearOpMode tempOpMode, OpenCvPipeline pipeline) {
+    Webcam(int cameraMonitorViewId, LinearOpMode tempOpMode, OpenCvPipeline pipeline) {
         // Setting opMode to constructor parameter
         opMode = tempOpMode;
         // Defining webcam object

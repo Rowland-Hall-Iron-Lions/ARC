@@ -19,7 +19,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.0'
+        classpath 'com.android.tools.build:gradle:7.0.3'
     }
 }
 
@@ -31,6 +31,9 @@ android {
     buildToolsVersion "30.0.2"
     lintOptions {
         abortOnError false
+    }
+    androidResources {
+        noCompress 'tflite'
     }
 }
 

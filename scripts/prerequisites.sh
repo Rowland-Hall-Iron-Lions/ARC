@@ -38,7 +38,7 @@ ROADRUNNER_CONTAINED_DIR=$TEAMCODE_DIR/lib/roadrunner/
 roadrunner() {
     progress git "Gitting...."
     rm -rf /tmp/dep/roadrunner
-    git clone https://github.com/acmerobotics/road-runner-quickstart.git tmp/dep/roadrunner # || process git "Failed to fetch road runner, aborting...."; exit
+    git clone https://github.com/acmerobotics/road-runner-quickstart.git /tmp/dep/roadrunner # || process git "Failed to fetch road runner, aborting...."; exit
     cd /tmp/dep/roadrunner
 
     # Checkout the right version. This may be updated, which is the whole purpose of this script.

@@ -38,6 +38,9 @@ jobs:
         distribution: 'adopt'
         cache: gradle
 
+    - name: Download prerequisites
+      run: bash ./scripts/prerequisites.sh -d 
+
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1

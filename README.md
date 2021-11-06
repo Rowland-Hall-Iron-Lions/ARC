@@ -19,6 +19,9 @@ You can find the original README (for the FtcRobotController repository) [here](
 2. Gradle (not strictly required, the wrapper should install it for you)
 3. An IDE of your choice
 
+# IMPORTANT!
+Do these steps before you ask how to build.
+
 ### Låt oss fortsätta med det (Let's get on with it)
 Because of the nature of the FTC Tech Challenge (yes, I know, [RAS syndome](https://en.wikipedia.org/wiki/RAS_syndrome)), all of our code is put inside of the FtcRobotController source tree. They use `gradle`, and so do we. Never used Gradle? Well, you don't need to. Android Studio (our IDE of choice, for most of us anyway) already has Gradle integration, so building should be as simple as pressing the build button. As for running the program, please refer to the original FtcRobotController repository.
 

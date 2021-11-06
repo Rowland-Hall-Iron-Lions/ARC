@@ -1,4 +1,4 @@
-/* package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
@@ -17,7 +17,7 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.sequencesegment.TrajectorySegment;
 
 @Autonomous
-public class autoModeBlue extends LinearOpMode {
+public class AutoModeBlue extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor rightDrive = null;
     private DcMotor leftDrive = null;
@@ -100,5 +100,5 @@ public class autoModeBlue extends LinearOpMode {
             }
         }
     }
-} */
+}
 

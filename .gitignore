@@ -4,6 +4,12 @@
 # Android studio meta-files
 **/.idea/
 
+# Don't include tmp directory
+tmp/
+
+# Don't include the already downloaded libraries
+TeamCode/src/main/java/org/firstinspires/ftc/teamcode/lib/
+
 # Built application files
 *.apk
 *.aar

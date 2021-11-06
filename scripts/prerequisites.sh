@@ -31,13 +31,15 @@ then
     exit
 fi
 
+INITIAL_DIR=`pwd`
 TEAMCODE_DIR="`pwd`/TeamCode/src/main/java/org/firstinspires/ftc/teamcode"
 ROADRUNNER_CONTAINED_DIR=$TEAMCODE_DIR/lib/roadrunner/
 
 roadrunner() {
     progress git "Gitting...."
+    rm -rf /tmp/dep/roadrunner
     git clone https://github.com/acmerobotics/road-runner-quickstart.git tmp/dep/roadrunner # || process git "Failed to fetch road runner, aborting...."; exit
-    cd tmp/dep/roadrunner
+    cd /tmp/dep/roadrunner
 
     # Checkout the right version. This may be updated, which is the whole purpose of this script.
     progress git "Checking out known version...."
@@ -55,9 +57,12 @@ roadrunner() {
     progress mv "Moving files...."
     mkdir -p $ROADRUNNER_CONTAINED_DIR
 
-    mv drive $ROADRUNNER_CONTAINED_DIR
+    mv -f drive $ROADRUNNER_CONTAINED_DIR
     mv trajectorysequence $ROADRUNNER_CONTAINED_DIR
     mv util $ROADRUNNER_CONTAINED_DIR
+
+    # Go back to where we were
+    cd $INITIAL_DIR
 }
 
 roadrunner_clean() {
@@ -73,15 +78,10 @@ download_prerequisites() {
     mkdir -p $ROADRUNNER_CONTAINED_DIR
 
     roadrunner
-
-    # Cleanup code
-    rm -rf tmp
 }
 
 clean_prerequisites() {
     roadrunner_clean
-
-    rm -rf tmp
 }
 
 while getopts dch flag

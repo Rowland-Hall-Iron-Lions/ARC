@@ -25,6 +25,9 @@ Because of the nature of the FTC Tech Challenge (yes, I know, [RAS syndome](http
 However, if you are an enterprising person, you may want to do things "the old-fashioned way", and use the command line. Lucky for us, Gradle is a command-line tool (in fact, Android Studio calls it). You can find the official documentation for building a Gradle project from the command line [here](https://spring.io/guides/gs/gradle/). For your convenience, we have listed the steps below!
 
 ```bash
+# The single line of code below you should only run once.
+bash ./scripts/prerequisites.sh -d
+
 # The only step you need to do to compile your code again is the ./gradlew builds command.
 # If this is your first time, follow the instructions below.
 # Check your java version

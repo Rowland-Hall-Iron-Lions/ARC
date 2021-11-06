@@ -5,10 +5,9 @@
 **/.idea/
 
 # Don't include tmp directory
-tmp/
 
 # Don't include the already downloaded libraries
-TeamCode/src/main/java/org/firstinspires/ftc/teamcode/lib/
+TeamCode/src/main/java/org/firstinspires/ftc/teamcode/lib/roadrunner
 
 # Built application files
 *.apk

@@ -6,6 +6,9 @@
 #### Notera (Note)!
 Before contributing, please read the [CONTRIBUTING.md](https://github.com/Rowland-Hall-Iron-Lions/ARC/blob/master/CONTRIBUTING.md) file.
 
+#### Notera (Note)!
+If you are an outside party, and are not part of the FTC team named "Rowland Hall Iron Lions", **please refer to the license**.
+
 # Välkommen (Welcome)!
 Why did we greet you in Sweedish? You'll never know, and neither will we.
 

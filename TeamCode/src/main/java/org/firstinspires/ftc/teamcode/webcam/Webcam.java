@@ -17,9 +17,6 @@ public class Webcam {
     /** Webcam object */
     OpenCvWebcam webcam;
 
-    /** Instantiating opMode object to be defined in constructor and call OpMode methods. */
-    LinearOpMode opMode;
-
     /** The name of the device. */
     String deviceName;
 

@@ -12,6 +12,7 @@ import org.openftc.easyopencv.OpenCvWebcam;
 import org.firstinspires.ftc.teamcode.logging.*;
 import org.firstinspires.ftc.teamcode.AutonomousMode;
 
+/** Class for interacting (and quasi-processing) of webcame data. */
 public class Webcam {
     /** Webcam object */
     OpenCvWebcam webcam;

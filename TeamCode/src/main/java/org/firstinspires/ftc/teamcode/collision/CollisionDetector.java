@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.collision;
 
+/** Class to detect collisions. */
 public class CollisionDetector {
     int Distance;
 

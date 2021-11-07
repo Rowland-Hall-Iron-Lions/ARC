@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.ir;
 
+/** Class for interacting with an IR sensor. */
 public class IRStream {
     /** Creates a new IRStream. */
     public IRStream() {

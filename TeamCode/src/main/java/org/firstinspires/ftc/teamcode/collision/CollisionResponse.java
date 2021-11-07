@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.collision;
 
+/** Class to response to collisions. */
 public class CollisionResponse<Distance> {
     int Distance = 100;
 

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.imu;
 
+/** Class for interacting with the onboard IMU sensor. */
 public class IMUStream {
     /** Creates a new IMUStream. */
     public IMUStream() {

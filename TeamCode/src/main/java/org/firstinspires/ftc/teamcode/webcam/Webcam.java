@@ -27,12 +27,12 @@ public class Webcam {
     int deviceId;
 
     /** Creates the OpenCvCamera object. */
-    public Webcam(OpenCvPipeline pipeline, int deviceId, String deviceName) {
+    public Webcam(OpenCvPipeline pipeline, int deviceId, WebcamName cameraDevice, String deviceName) {
         this.deviceName = deviceName;
         this.deviceId = deviceId;
 
         // Defining webcam object.
-        webcam = OpenCvCameraFactory.getInstance().createWebcam(opMode.hardwareMap.get(WebcamName.class, deviceName), deviceId);
+        webcam = OpenCvCameraFactory.getInstance().createWebcam(cameraDevice, deviceId);
 
         // Setting webcam's pipeline to constructor parameter.
         webcam.setPipeline(pipeline);

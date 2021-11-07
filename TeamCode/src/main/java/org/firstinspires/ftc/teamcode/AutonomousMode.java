@@ -6,6 +6,7 @@ import org.firstinspires.ftc.teamcode.logging.*;
 import org.firstinspires.ftc.teamcode.webcam.Webcam;
 import org.firstinspires.ftc.teamcode.webcam.WebcamPipeline;
 
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import android.content.Context;
@@ -69,7 +70,7 @@ public class AutonomousMode extends OpMode {
 
             entry.setValue(
                 new WebcamData(id,
-                    new Webcam(new WebcamPipeline(), id, entry.getKey())
+                    new Webcam(new WebcamPipeline(), id, hardwareMap.get(WebcamName.class, entry.getKey()), entry.getKey())
                 )
             );
         }

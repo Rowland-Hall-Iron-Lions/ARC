@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.environment.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,8 +14,8 @@ class EntityTypeTest {
     @DisplayName("Numeric values of entity types are valid")
     public void entityTypesValid() {
         // TODO: The below code isn't that versatile. Improve this.
-        assertTrue(EntityType.ROBOT == 0);
-        assertTrue(EntityType.GENERIC == 1);
+        assertTrue(EntityType.ROBOT.getValue() == 0);
+        assertTrue(EntityType.GENERIC.getValue() == 1);
     }
 }
 

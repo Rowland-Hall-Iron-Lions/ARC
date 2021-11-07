@@ -78,7 +78,11 @@ modification follow.
 works, such as semiconductor masks.
 
   "The Program" refers to any copyrightable work licensed under this
-License.  Each licensee is addressed as "you".  "Licensees" and
+License.  This copyrightable work includes all the source files in this
+directory (folder), and the build files in the root of the project that
+are modified from the origin fork of the program (FtcRobotController,
+located at the URL https://github.com/FirstTechChallenge/FtcRobotController).
+Each licensee is addressed as "you".  "Licensees" and
 "recipients" may be individuals or organizations.
 
   To "modify" a work means to copy from or adapt all or part of the work

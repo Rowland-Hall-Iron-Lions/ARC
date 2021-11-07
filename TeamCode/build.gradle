@@ -11,12 +11,13 @@
 
 // Custom definitions may go here
 apply plugin: 'com.android.application'
+apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
-
     androidResources {
         noCompress 'tflite'
     }
+
     lintOptions {
         abortOnError false
     }
@@ -36,4 +37,8 @@ dependencies {
 
     // Easy open cv
     implementation 'org.openftc:easyopencv:1.5.0'
+
+    // JUnit 5
+    testImplementation "org.junit.jupiter:junit-jupiter:5.7.1"
 }
+

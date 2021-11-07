@@ -33,7 +33,7 @@ setup() {
     prerequisites
 
     progress jdk "Getting JDK $TARGET_JAVA_VERSION...."
-    setup_jdk11
+    setup_jdk
 
     progress finish "Done with setup! Please follow the simple build instructions in the README on how to build the binary from the command line. Other wise, just click the \"Build\" button inside Android Studio."
 }
@@ -42,7 +42,7 @@ prerequisites() {
     ./scripts/prerequisites.sh -d
 }
 
-setup_jdk11() {
+setup_jdk() {
     if [ "$JAVA_VERSION" != "$TARGET_JAVA_VERSION" ] || [ $FORCE_JAVA == "true" ]
     then
         progress jdk "Found JDK $JAVA_VERSION, which is NOT JDK $TARGET_JAVA_VERSION. Installing JDK $TARGET_JAVA_VERSION...."
@@ -59,7 +59,6 @@ setup_jdk11() {
 
         progress jdk "Installing JDK $TARGET_JAVA_VERSION with sdkman...."
         sdk install java $SDKMAN_JAVA_INSTALL
-        
     else
         progress jdk "JDK $TARGET_JAVA_VERSION already downloaded, skiping step...."
         return

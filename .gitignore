@@ -4,7 +4,8 @@
 # Android studio meta-files
 **/.idea/
 
-# Don't include tmp directory
+# Don't include setup lockfile
+.setup.lock
 
 # Don't include the already downloaded libraries
 TeamCode/src/main/java/org/firstinspires/ftc/teamcode/lib/roadrunner

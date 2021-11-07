@@ -26,34 +26,14 @@ You can find the original README (for the FtcRobotController repository) [here](
 Do these steps before you ask how to build.
 
 ### Låt oss fortsätta med det (Let's get on with it)
-Because of the nature of the FTC Tech Challenge (yes, I know, [RAS syndome](https://en.wikipedia.org/wiki/RAS_syndrome)), all of our code is put inside of the FtcRobotController source tree. They use `gradle`, and so do we. Never used Gradle? Well, you don't need to. Android Studio (our IDE of choice, for most of us anyway) already has Gradle integration, so building should be as simple as pressing the build button. As for running the program, please refer to the original FtcRobotController repository.
+Because of the nature of the FTC Tech Challenge (yes, I know, [RAS syndome](https://en.wikipedia.org/wiki/RAS_syndrome)), all of our code is put inside of the FtcRobotController source tree. They use `gradle`, and so do we. Never used Gradle? Well, you don't need to. Android Studio (our IDE of choice, for most of us anyway) already has Gradle integration, so building should be as simple as pressing the build button. **You need to do some setup the first time you build.** Run this:
+```bash
+./scripts/setup.sh
+```
 
-However, if you are an enterprising person, you may want to do things "the old-fashioned way", and use the command line. Lucky for us, Gradle is a command-line tool (in fact, Android Studio calls it). You can find the official documentation for building a Gradle project from the command line [here](https://spring.io/guides/gs/gradle/). For your convenience, we have listed the steps below!
+However, if you are an enterprising person, you may want to do things "the old-fashioned way", and use the command line. **You still need to do the setup, mentioned above** Lucky for us, Gradle is a command-line tool (in fact, Android Studio calls it). You can find the official documentation for building a Gradle project from the command line [here](https://spring.io/guides/gs/gradle/). For your convenience, we have listed the steps below!
 
 ```bash
-# The single line of code below you should only run once.
-bash ./scripts/prerequisites.sh -d
-
-# The only step you need to do to compile your code again is the ./gradlew builds command.
-# If this is your first time, follow the instructions below.
-# Check your java version
-
-java --version
-
-# If you have anything other than verison 11, you will need to install it, because Java is
-# Java. Fear not, this is a simple process. If 11 is installed, skip to the bottom.
-
-# First, we install a tool that lets you manage your Java versions.
-curl -s "https://get.sdkman.io" | bash
-echo source \"$HOME/.sdkman/bin/sdkman-init.sh\" >> ~/.$(basename $SHELL)rc
-source ~/.$(basename $SHELL)rc
-
-# Next, you can install JDK 11 (what we want)
-sdk install java 11.0.11.hs-adpt
-
-# You should now be good to go! If you encountered any errors, please email/text/contact:
-#   Milo Banks <milobanks@rowlandhall.org>
-
 ./gradlew build
 ```
 

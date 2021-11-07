@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.environment;
 import org.firstinspires.ftc.teamcode.environment.EntityType;
 
 public interface Entity {
+    /** Gets the type on an entity. */
     public EntityType getType();
 
     /** Constructs an entity. */
@@ -33,5 +34,11 @@ public interface Entity {
     /** Sets the current y position value. the value already in place
      * is moved into the past_y variable. */
     public void setY(int y);
+
+    /** Sets both the past x and the current x position value. */
+    public void setAllX(int x);
+
+    /** Sets both the past y and the current y position value. */
+    public void setAllY(int y);
 }
 

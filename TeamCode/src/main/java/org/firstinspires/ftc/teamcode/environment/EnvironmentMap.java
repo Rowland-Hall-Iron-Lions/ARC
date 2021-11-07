@@ -93,7 +93,5 @@ public class EnvironmentMap {
     public void setAllEntities(ArrayList<Entity> new_entities) {
         entities = new_entities;
     }
-
-    public void foo() {}
 }
 

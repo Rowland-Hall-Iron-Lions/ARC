@@ -5,6 +5,7 @@ TARGET_JAVA_VERSION=11.0
 SDKMAN_JAVA_INSTALL=11.0.11.hs-adpt
 FORCE_SDKMAN=true
 FORCE_JAVA=true
+FORCE_PREREQUISITES=true
 
 command_not_found() {
     echo "'$1' could not be found, or is not an executable file in your PATH."
@@ -29,6 +30,7 @@ error() {
 }
 
 setup() {
+    echo $FORCE_PREREQUISITES
     progress pre "Downloading prerequisites...."
     prerequisites
 
@@ -39,7 +41,12 @@ setup() {
 }
 
 prerequisites() {
-    ./scripts/prerequisites.sh -d
+    if [[ "$FORCE_PREREQUISITES" == "true" ]]
+    then
+        ./scripts/prerequisites.sh -d
+    else
+        progress pre "Not forcing prerequisites on request, skipping step...."
+    fi
 }
 
 setup_jdk() {
@@ -47,7 +54,7 @@ setup_jdk() {
     then
         progress jdk "Found JDK $JAVA_VERSION, which is NOT JDK $TARGET_JAVA_VERSION. Installing JDK $TARGET_JAVA_VERSION...."
 
-        if ! [[ "`command -v sdk`" != *"sdk"* || $FORCE_SDK == "true" ]]
+        if [[ "`command -v sdk`" != *"sdk"* || $FORCE_SDK == "true" ]]
         then
             progress sdk "Installing sdkman to manage JDK versions...."
             curl -s "https://get.sdkman.io" | bash

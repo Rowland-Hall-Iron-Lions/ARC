@@ -1,3 +1,5 @@
+package org.firstinspires.ftc.teamcode.environment;
+
 /** Enum containing all the possible things we could detect. */
 public enum EntityType {
     /** A robot entity. */

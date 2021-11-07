@@ -18,9 +18,10 @@ buildscript {
         google()
         mavenCentral()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.3'
-        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.8.0.0"
+        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.7.1.1"
     }
 }
 
@@ -44,5 +45,8 @@ dependencies {
 
     // Road runner
     implementation 'com.acmerobotics.roadrunner:core:0.5.4'
+    
+    // JUnit 5
+    testImplementation 'junit:junit:4.12'
 }
 

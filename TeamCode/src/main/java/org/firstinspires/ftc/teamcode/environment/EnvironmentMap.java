@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 
+import org.firstinspires.ftc.teamcode.environment.Entity;
+import org.firstinspires.ftc.teamcode.environment.EntityType;
+import org.firstinspires.ftc.teamcode.environment.RobotEntity;
+
 /** A wrapper for a list of entities. Provides a useful API for code abstraction, along
  * wth making the code easier for less advanced developers. */
 public class EnvironmentMap {

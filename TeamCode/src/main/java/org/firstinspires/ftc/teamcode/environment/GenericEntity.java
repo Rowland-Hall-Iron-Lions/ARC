@@ -3,34 +3,20 @@ package org.firstinspires.ftc.teamcode.environment;
 import org.firstinspires.ftc.teamcode.environment.Entity;
 import org.firstinspires.ftc.teamcode.environment.EntityType;
 
-public class RobotEntity implements Entity {
-    boolean active;
-
+/** A generic entity. Used mostly for testing, but should be in
+ * the main source tree as it's not actually a test itself. */
+public class GenericEntity implements Entity {
     int x = 0;
     int y = 0;
     int past_x = 0;
     int past_y = 0;
 
-    public boolean isActive() {
-        return active;
-    }
-
     public EntityType getType() {
-        return EntityType.ROBOT;
+        return EntityType.GENERIC;
     }
 
     /** Constructs an entity. */
     public void setUp() {
-        // Hmm, nothing here yet.
-    }
-
-    /** Constructs an entity. Is it active? */
-    public RobotEntity(boolean active) {
-        this.active = active;
-    }
-
-    /** Constructs an entity. */
-    public RobotEntity() {
         // Hmm, nothing here yet.
     }
 
@@ -64,11 +50,6 @@ public class RobotEntity implements Entity {
         return past_y + y;
     }
 
-    /** Sets activity. */
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
     /** Sets the current x position value. the value already in place
      * is moved into the past_x variable. */
     public void setX(int x) {
@@ -94,5 +75,6 @@ public class RobotEntity implements Entity {
         this.past_y = y;
         this.y = y;
     }
+
 }
 

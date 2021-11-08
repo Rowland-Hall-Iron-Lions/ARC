@@ -8,10 +8,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import org.firstinspires.ftc.teamcode.environment.EnvironmentMap;
-import org.firstinspires.ftc.teamcode.environment.GenericEntity;
-import org.firstinspires.ftc.teamcode.environment.RobotEntity;
-import org.firstinspires.ftc.teamcode.environment.Entity;
+import org.firstinspires.ftc.teamcode.autonomous.environment.EnvironmentMap;
+import org.firstinspires.ftc.teamcode.autonomous.environment.GenericEntity;
+import org.firstinspires.ftc.teamcode.autonomous.environment.RobotEntity;
+import org.firstinspires.ftc.teamcode.autonomous.environment.Entity;
 
 import java.util.ArrayList;
 

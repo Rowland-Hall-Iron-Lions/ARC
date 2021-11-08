@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.collision;
+package org.firstinspires.ftc.teamcode.autonomous.collision;
 
 /** Class to response to collisions. */
 public class CollisionResponse<Distance> {

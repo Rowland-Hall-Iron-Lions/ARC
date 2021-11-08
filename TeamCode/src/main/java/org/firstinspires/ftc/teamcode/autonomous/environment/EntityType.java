@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.environment;
+package org.firstinspires.ftc.teamcode.autonomous.environment;
 
 /** Enum containing all the possible things we could detect. */
 public enum EntityType {

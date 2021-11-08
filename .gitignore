@@ -8,7 +8,7 @@
 .setup.lock
 
 # Don't include the already downloaded libraries
-TeamCode/src/main/java/org/firstinspires/ftc/teamcode/lib/roadrunner
+TeamCode/src/main/java/org/rowlandhall/arc/lib/
 
 # Built application files
 *.apk

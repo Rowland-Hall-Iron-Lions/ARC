@@ -2,43 +2,79 @@ package org.firstinspires.ftc.teamcode.environment;
 
 import org.firstinspires.ftc.teamcode.environment.EntityType;
 
-public interface Entity {
+public abstract class Entity {
+    /** The x coordinate of our entity. */
+    int x = 0;
+
+    /** The y coordinate of our entity. */
+    int y = 0;
+
+    /** The previous value of the x coordinate. */
+    int past_x = 0;
+
+    /** The previous value of the y coordinate. */
+    int past_y = 0;
+
     /** Gets the type on an entity. */
-    public EntityType getType();
+    abstract public EntityType getType();
 
     /** Constructs an entity. */
-    public void setUp();
+    abstract public void setUp();
 
     /** Gets the current x position value. */
-    public int getX();
+    public int getX() {
+        return x;
+    }
 
     /** Gets the current y position value.  */
-    public int getY();
+    public int getY() {
+        return y;
+    }
 
     /** Gets the position of x that was stored before a set_x() call. */
-    public int getPastX();
+    public int getPastX() {
+        return past_x;
+    };
 
     /** Gets the position of y that was stored before a set_y() call. */
-    public int getPastY();
+    public int getPastY() {
+        return past_y;
+    }
 
     /** Returns the difference between the current x and the past x positional values. */
-    public int getDeltaX();
+    public int getDeltaX() {
+        return past_x + x;
+    }
 
     /** Returns the difference between the current y and the past y positional values. */
-    public int getDeltaY();
+    public int getDeltaY() {
+        return past_y + y;
+    }
 
-    /** Sets the current x position value. the value already in place
+    /** Sets the current x position value. The value already in place
      * is moved into the past_x variable. */
-    public void setX(int x);
+    public void setX(int in_x) {
+        past_x = x;
+        x = in_x;
+    }
 
-    /** Sets the current y position value. the value already in place
+    /** Sets the current y position value. The value already in place
      * is moved into the past_y variable. */
-    public void setY(int y);
+    public void setY(int in_y) {
+        past_y = y;
+        y = in_y;
+    }
 
     /** Sets both the past x and the current x position value. */
-    public void setAllX(int x);
+    public void setAllX(int in_x) {
+        x = in_x;
+        past_x = in_x;
+    }
 
     /** Sets both the past y and the current y position value. */
-    public void setAllY(int y);
+    public void setAllY(int in_y) {
+        y = in_y;
+        past_y = in_y;
+    }
 }
 

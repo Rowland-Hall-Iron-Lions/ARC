@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.webcam;
+package org.firstinspires.ftc.teamcode.sensor.webcam;
 
 import org.opencv.core.Mat;
 import org.opencv.core.Point;

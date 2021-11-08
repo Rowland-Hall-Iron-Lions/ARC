@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.webcam;
+package org.firstinspires.ftc.teamcode.sensor.webcam;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -11,9 +11,10 @@ import org.openftc.easyopencv.OpenCvWebcam;
 
 import org.firstinspires.ftc.teamcode.logging.*;
 import org.firstinspires.ftc.teamcode.AutonomousMode;
+import org.firstinspires.ftc.teamcode.sensor.Sensor;
 
 /** Class for interacting (and quasi-processing) of webcame data. */
-public class Webcam {
+public class Webcam implements Sensor {
     /** Webcam object */
     OpenCvWebcam webcam;
 
@@ -55,6 +56,12 @@ public class Webcam {
                 Logging.error("Easy OpenCV could not open the camera. Error code: " + errorCode);
             }
         });
+    }
+
+    /** Get the frame. Don't return it, just store it somewhere that other
+     * code can access. */
+    public void getFrame() {
+
     }
 
     /** Method for streaming webcam data with more specific arguments. */

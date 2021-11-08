@@ -32,7 +32,7 @@ then
 fi
 
 INITIAL_DIR=`pwd`
-TEAMCODE_DIR="`pwd`/TeamCode/src/main/java/org/firstinspires/ftc/teamcode"
+TEAMCODE_DIR="`pwd`/TeamCode/src/main/java/org/rowlandhall/arc"
 ROADRUNNER_CONTAINED_DIR=$TEAMCODE_DIR/lib/roadrunner/
 
 roadrunner() {

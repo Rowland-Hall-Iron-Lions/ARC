@@ -1,11 +1,11 @@
-package org.firstinspires.ftc.teamcode.autonomous.environment;
+package org.rowlandhall.arc.autonomous.environment;
 
 import java.util.ArrayList;
 
-import org.firstinspires.ftc.teamcode.autonomous.environment.NoActiveEntityException;
-import org.firstinspires.ftc.teamcode.autonomous.environment.Entity;
-import org.firstinspires.ftc.teamcode.autonomous.environment.EntityType;
-import org.firstinspires.ftc.teamcode.autonomous.environment.RobotEntity;
+import org.rowlandhall.arc.autonomous.environment.NoActiveEntityException;
+import org.rowlandhall.arc.autonomous.environment.Entity;
+import org.rowlandhall.arc.autonomous.environment.EntityType;
+import org.rowlandhall.arc.autonomous.environment.RobotEntity;
 
 /** A wrapper for a list of entities. Provides a useful API for code abstraction, along
  * wth making the code easier for less advanced developers. */

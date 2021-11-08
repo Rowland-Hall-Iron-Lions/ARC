@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.environment.test;
+package org.rowlandhall.arc.environment.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -7,8 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import org.firstinspires.ftc.teamcode.autonomous.environment.GenericEntity;
-import org.firstinspires.ftc.teamcode.autonomous.environment.EntityType;
+import org.rowlandhall.arc.autonomous.environment.GenericEntity;
+import org.rowlandhall.arc.autonomous.environment.EntityType;
 
 import java.io.FileWriter;
 import java.io.IOException;

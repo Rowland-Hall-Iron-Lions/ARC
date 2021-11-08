@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.autonomous.collision;
+package org.rowlandhall.arc.autonomous.collision;
 
 /** Class to detect collisions. */
 public class CollisionDetector {

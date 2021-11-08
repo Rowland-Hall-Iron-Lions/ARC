@@ -1,6 +1,6 @@
-package org.firstinspires.ftc.teamcode.autonomous.environment;
+package org.rowlandhall.arc.autonomous.environment;
 
-import org.firstinspires.ftc.teamcode.autonomous.environment.EntityType;
+import org.rowlandhall.arc.autonomous.environment.EntityType;
 
 public abstract class Entity {
     /** The x coordinate of our entity. */

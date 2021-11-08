@@ -1,6 +1,6 @@
-package org.firstinspires.ftc.teamcode.autonomous.sensor.imu;
+package org.rowlandhall.arc.autonomous.sensor.imu;
 
-import org.firstinspires.ftc.teamcode.autonomous.sensor.Sensor;
+import org.rowlandhall.arc.autonomous.sensor.Sensor;
 
 /** Class for interacting with the onboard IMU sensor. */
 public class IMUStream implements Sensor {

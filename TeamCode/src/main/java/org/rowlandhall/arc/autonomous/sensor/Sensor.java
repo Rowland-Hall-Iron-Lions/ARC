@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.autonomous.sensor;
+package org.rowlandhall.arc.autonomous.sensor;
 
 /** An interface that all sensors should implement. This is mainly 
  * just for convience */

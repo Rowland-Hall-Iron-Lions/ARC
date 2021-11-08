@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.autonomous.sensor.webcam;
+package org.rowlandhall.arc.autonomous.sensor.webcam;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -9,9 +9,9 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvPipeline;
 import org.openftc.easyopencv.OpenCvWebcam;
 
-import org.firstinspires.ftc.teamcode.logging.*;
-import org.firstinspires.ftc.teamcode.AutonomousMode;
-import org.firstinspires.ftc.teamcode.autonomous.sensor.Sensor;
+import org.rowlandhall.arc.logging.*;
+import org.rowlandhall.arc.AutonomousMode;
+import org.rowlandhall.arc.autonomous.sensor.Sensor;
 
 /** Class for interacting (and quasi-processing) of webcame data. */
 public class Webcam implements Sensor {

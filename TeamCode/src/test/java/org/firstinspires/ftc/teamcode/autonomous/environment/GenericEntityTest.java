@@ -7,8 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import org.firstinspires.ftc.teamcode.environment.GenericEntity;
-import org.firstinspires.ftc.teamcode.environment.EntityType;
+import org.firstinspires.ftc.teamcode.autonomous.environment.GenericEntity;
+import org.firstinspires.ftc.teamcode.autonomous.environment.EntityType;
 
 import java.io.FileWriter;
 import java.io.IOException;

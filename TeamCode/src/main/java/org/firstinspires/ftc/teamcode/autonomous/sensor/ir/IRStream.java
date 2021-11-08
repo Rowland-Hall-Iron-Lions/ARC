@@ -1,6 +1,6 @@
-package org.firstinspires.ftc.teamcode.sensor.ir;
+package org.firstinspires.ftc.teamcode.autonomous.sensor.ir;
 
-import org.firstinspires.ftc.teamcode.sensor.Sensor;
+import org.firstinspires.ftc.teamcode.autonomous.sensor.Sensor;
 
 /** Class for interacting with an IR sensor. */
 public class IRStream implements Sensor {

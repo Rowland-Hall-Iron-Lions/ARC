@@ -1,7 +1,7 @@
-package org.firstinspires.ftc.teamcode.environment;
+package org.firstinspires.ftc.teamcode.autonomous.environment;
 
-import org.firstinspires.ftc.teamcode.environment.Entity;
-import org.firstinspires.ftc.teamcode.environment.EntityType;
+import org.firstinspires.ftc.teamcode.autonomous.environment.Entity;
+import org.firstinspires.ftc.teamcode.autonomous.environment.EntityType;
 
 public class RobotEntity extends Entity {
     boolean active;

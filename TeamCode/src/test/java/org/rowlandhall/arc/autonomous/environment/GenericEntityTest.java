@@ -4,14 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import org.rowlandhall.arc.autonomous.environment.GenericEntity;
 import org.rowlandhall.arc.autonomous.environment.EntityType;
-
-import java.io.FileWriter;
-import java.io.IOException;
 
 class GenericEntityTest {
     GenericEntity entity;

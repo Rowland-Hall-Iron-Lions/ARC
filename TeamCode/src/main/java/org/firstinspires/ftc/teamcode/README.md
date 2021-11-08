@@ -1,9 +1,3 @@
 # Welcome to our code (ARC)
-In this repository, all our actual code is hosted. As we write our code, this README file will be populated with useful information. As always, you can find the original README [here](https://github.com/FIRST-Tech-Challenge/FtcRobotController/tree/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode).
-
-## Logging
-A thin convience wrapper around the FtcRobotController logging interface/API.
-
-## Autonomous
-This is where our autonomous code is stored.
+Contrary to popular belief, this is not where we store our main code. This package only exists so the FTC SDK knows where our opmodes ("entry points") are. The code in this package calls the `org.rowlandhall.arc`. All opmodes ("entry points") in this directory should call functions from said package. As always, you can find the original README [here](https://github.com/FIRST-Tech-Challenge/FtcRobotController/tree/master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode).
 

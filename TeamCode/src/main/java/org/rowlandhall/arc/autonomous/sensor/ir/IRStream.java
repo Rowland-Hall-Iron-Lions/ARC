@@ -13,7 +13,7 @@ public class IRStream implements Sensor {
      * next in sequence from the last invokation, but instead gets the
      * very latest. */
     public void getFrame() {
-
+        
     }
 
     /** Outputs telemetry data. */

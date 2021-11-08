@@ -1,9 +1,10 @@
+#!/usr/bin/env bash
+
 SETUP_LOCKFILE_NAME="./.setup.lock"
-SHELL_NAME=`basename $SHELL`
-JAVA_VERSION=`java -version 2>&1 | grep -i version | cut -d'"' -f2 | cut -d'.' -f1-2`
+SHELL_NAME=$(basename $SHELL)
+JAVA_VERSION=$(java -version 2>&1 | grep -i version | cut -d'"' -f2 | cut -d'.' -f1-2)
 TARGET_JAVA_VERSION=11.0
 SDKMAN_JAVA_INSTALL=11.0.11.hs-adpt
-FORCE_SDKMAN=true
 FORCE_JAVA=true
 FORCE_PREREQUISITES=true
 
@@ -16,7 +17,7 @@ command_not_found() {
 
 usage() {
     echo "usage: setup"
-    echo "\tno arguments"
+    echo -e "\tno arguments"
 }
 
 progress() {
@@ -30,7 +31,7 @@ error() {
 }
 
 setup() {
-    echo $FORCE_PREREQUISITES
+    echo "$FORCE_PREREQUISITES"
     progress pre "Downloading prerequisites...."
     prerequisites
 
@@ -50,11 +51,11 @@ prerequisites() {
 }
 
 setup_jdk() {
-    if [ "$JAVA_VERSION" != "$TARGET_JAVA_VERSION" ] || [ $FORCE_JAVA == "true" ]
+    if [ "$JAVA_VERSION" != "$TARGET_JAVA_VERSION" ] || [ "$FORCE_JAVA" == "true" ]
     then
         progress jdk "Found JDK $JAVA_VERSION, which is NOT JDK $TARGET_JAVA_VERSION. Installing JDK $TARGET_JAVA_VERSION...."
 
-        if [[ "`command -v sdk`" != *"sdk"* || $FORCE_SDK == "true" ]]
+        if [[ "$(command -v sdk)" != *"sdk"* || $FORCE_SDK == "true" ]]
         then
             progress sdk "Installing sdkman to manage JDK versions...."
             curl -s "https://get.sdkman.io" | bash
@@ -62,10 +63,10 @@ setup_jdk() {
             progress sdk "sdkman already installed, skipping install step (but still installing JDK $TARGET_JAVA_VERSION, if applicable)...."
         fi
 
-        source $HOME/.sdkman/bin/sdkman-init.sh
+        source "$HOME/.sdkman/bin/sdkman-init.sh"
 
         progress jdk "Installing JDK $TARGET_JAVA_VERSION with sdkman...."
-        sdk install java $SDKMAN_JAVA_INSTALL
+        sdk install java "$SDKMAN_JAVA_INSTALL"
     else
         progress jdk "JDK $TARGET_JAVA_VERSION already downloaded, skiping step...."
         return
@@ -88,5 +89,5 @@ fi
 progress setup "Setting up...."
 setup
 
-touch $SETUP_LOCKFILE_NAME
+touch "$SETUP_LOCKFILE_NAME"
 

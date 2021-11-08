@@ -12,7 +12,7 @@ If you are an outside party, and are not part of the FTC team named "Rowland Hal
 # Välkommen (Welcome)!
 Why did we greet you in Sweedish? You'll never know, and neither will we.
 
-This repository is based on the FtcRobotController, and this is where all of our code goes. You can find the code that we wrote inside the `TeamCode/src/main/java/org/firstinspires/FTC/teamcode` directory. From there, there is another README explaining the anatomy and layout of the source code.
+This repository is based on the FtcRobotController, and this is where all of our code goes. You can find the code that we wrote inside the `TeamCode/src/main/java/org/rowlandhall/arc` directory (you can find minimal driver code in `Teamcode/src/main/java/org/firstinspires/ftc/teamcode/`). From there, there is another README explaining the anatomy and layout of the source code.
 
 You can find the original README (for the FtcRobotController repository) [here](https://github.com/FIRST-Tech-Challenge/FtcRobotController).
 

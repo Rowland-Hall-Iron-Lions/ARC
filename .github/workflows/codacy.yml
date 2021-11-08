@@ -3,6 +3,7 @@ name: Comment issue on Jira
 on: [push, pull_request]
 
 jobs:
-  - name: Codacy Analysis CLI
-    uses: codacy/codacy-analysis-cli-action@4.0.0 
+  steps:
+    - name: Codacy Analysis CLI
+      uses: codacy/codacy-analysis-cli-action@4.0.0 
 

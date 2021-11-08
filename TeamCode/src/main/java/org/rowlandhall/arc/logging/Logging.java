@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.logging;
+package org.rowlandhall.arc.logging;
 
 import android.annotation.SuppressLint;
 import com.qualcomm.robotcore.util.RobotLog;

@@ -1,7 +1,7 @@
-package org.firstinspires.ftc.teamcode.autonomous.environment;
+package org.rowlandhall.arc.autonomous.environment;
 
-import org.firstinspires.ftc.teamcode.autonomous.environment.Entity;
-import org.firstinspires.ftc.teamcode.autonomous.environment.EntityType;
+import org.rowlandhall.arc.autonomous.environment.Entity;
+import org.rowlandhall.arc.autonomous.environment.EntityType;
 
 /** A generic entity. Used mostly for testing, but should be in
  * the main source tree as it's not actually a test itself. */

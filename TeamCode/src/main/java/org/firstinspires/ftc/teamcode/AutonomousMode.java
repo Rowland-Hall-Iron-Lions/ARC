@@ -1,10 +1,10 @@
-package org.firstinspires.ftc.teamcode;
+package org.rowlandhall.arc;
 
 import com.qualcomm.robotcore.eventloop.opmode.*;
 
-import org.firstinspires.ftc.teamcode.logging.*;
-import org.firstinspires.ftc.teamcode.autonomous.sensor.webcam.Webcam;
-import org.firstinspires.ftc.teamcode.autonomous.sensor.webcam.WebcamPipeline;
+import org.rowlandhall.arc.logging.*;
+import org.rowlandhall.arc.autonomous.sensor.webcam.Webcam;
+import org.rowlandhall.arc.autonomous.sensor.webcam.WebcamPipeline;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.Telemetry;

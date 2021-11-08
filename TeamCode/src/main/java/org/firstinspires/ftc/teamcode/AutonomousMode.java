@@ -3,8 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.*;
 
 import org.firstinspires.ftc.teamcode.logging.*;
-import org.firstinspires.ftc.teamcode.webcam.Webcam;
-import org.firstinspires.ftc.teamcode.webcam.WebcamPipeline;
+import org.firstinspires.ftc.teamcode.sensor.webcam.Webcam;
+import org.firstinspires.ftc.teamcode.sensor.webcam.WebcamPipeline;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.Telemetry;

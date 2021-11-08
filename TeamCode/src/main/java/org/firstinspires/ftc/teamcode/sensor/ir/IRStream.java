@@ -1,7 +1,9 @@
-package org.firstinspires.ftc.teamcode.ir;
+package org.firstinspires.ftc.teamcode.sensor.ir;
+
+import org.firstinspires.ftc.teamcode.sensor.Sensor;
 
 /** Class for interacting with an IR sensor. */
-public class IRStream {
+public class IRStream implements Sensor {
     /** Creates a new IRStream. */
     public IRStream() {
 
@@ -10,7 +12,12 @@ public class IRStream {
     /** Gets the current frame of information. Does not return the 
      * next in sequence from the last invokation, but instead gets the
      * very latest. */
-    public void getCurrentFrame() {
+    public void getFrame() {
+
+    }
+
+    /** Outputs telemetry data. */
+    public void outputTelemetryData() {
 
     }
 }

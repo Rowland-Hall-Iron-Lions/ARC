@@ -18,7 +18,7 @@ public class EnvironmentMap {
 
     /** Constructor for the environment map. Takes no arguments, as these
      * should be loaded and unloaded dynamically at runtime. */
-    public void EnvironmentMap() {
+    public EnvironmentMap() {
         this.last_time_since_epoch = System.currentTimeMillis();
     }
 

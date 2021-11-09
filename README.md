@@ -1,6 +1,24 @@
 <h1 align="center">ARC 🧑‍💻</h1>
 <h2 align="center">Advanced rowland-hall-Robot Controller</h2>
 
+<p align="center">
+<img align="center" src="https://forthebadge.com/images/badges/built-for-android.svg">
+<img align="center" src="https://forthebadge.com/images/badges/built-with-resentment.svg">
+<img align="center" src="https://forthebadge.com/images/badges/made-with-java.svg">
+
+<br>
+
+<img align="center" src="https://img.shields.io/codacy/grade/6fa9ef81db7642c9962f16ce51d64210?style=flat-square">
+<img align="center" src="https://img.shields.io/github/repo-size/rowland-hall-iron-lions/arc?style=flat-square">
+<img align="center" src="https://img.shields.io/github/issues/rowland-hall-iron-lions/arc?style=flat-square">
+<img align="center" src="https://img.shields.io/github/license/rowland-hall-iron-lions/arc?style=flat-square">
+
+<br>
+
+<img align="center" src="https://img.shields.io/github/commit-activity/w/rowland-hall-iron-lions/arc?style=flat-square">
+<img align="center" src="https://img.shields.io/github/last-commit/rowland-hall-iron-lions/arc?style=flat-square">
+</p>
+
 ---
 
 #### Notera (Note)

@@ -19,7 +19,8 @@ public class RobotEntity extends Entity {
         // Hmm, nothing here yet.
     }
 
-    /** Constructs an entity. Is it active? */
+    /** Constructs an entity. Is it active? 
+     * @param active Set this as inactive or active from the get go. */
     public RobotEntity(boolean active) {
         this.active = active;
     }
@@ -29,7 +30,8 @@ public class RobotEntity extends Entity {
         // Hmm, nothing here yet.
     }
 
-    /** Sets activity. */
+    /** Sets activity.
+     * @param active Sets this entity as either active or not. */
     public void setActive(boolean active) {
         this.active = active;
     }

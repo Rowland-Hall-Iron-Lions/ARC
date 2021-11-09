@@ -52,26 +52,30 @@ public abstract class Entity {
     }
 
     /** Sets the current x position value. The value already in place
-     * is moved into the past_x variable. */
+     * is moved into the past_x variable.
+     * @param in_x What to set the current X coordinate to. */
     public void setX(int in_x) {
         past_x = x;
         x = in_x;
     }
 
     /** Sets the current y position value. The value already in place
-     * is moved into the past_y variable. */
+     * is moved into the past_y variable.
+     * @param in_y What to set the current Y coordinate to. */
     public void setY(int in_y) {
         past_y = y;
         y = in_y;
     }
 
-    /** Sets both the past x and the current x position value. */
+    /** Sets both the past x and the current x position value.
+     * @param in_x What to set all X coordinate related values to. */
     public void setAllX(int in_x) {
         x = in_x;
         past_x = in_x;
     }
 
-    /** Sets both the past y and the current y position value. */
+    /** Sets both the past y and the current y position value.
+     * @param in_y What to set all Y coordinate related values to. */
     public void setAllY(int in_y) {
         y = in_y;
         past_y = in_y;

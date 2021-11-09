@@ -2,7 +2,8 @@ package org.rowlandhall.arc.autonomous.collision;
 
 /** Class to response to collisions. */
 public class CollisionResponse {
-    /** Detect if we need to change our velocity (based on if we are about to collide with something). */
+    /** Detect if we need to change our velocity (based on if we are about to collide with something).
+     * @param distance How far away from the object in front of us are we (centimeters). */
     Boolean detectIfNeeded(int distance) {
         // Detect if we are within 12 inches
         if (distance <= 12) {

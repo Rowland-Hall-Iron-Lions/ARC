@@ -22,7 +22,11 @@ public class Webcam implements Sensor {
     /** The ID of the device. */
     int deviceId;
 
-    /** Creates the OpenCvCamera object. */
+    /** Creates the OpenCvCamera object.
+     * @param pipeline The easyopencv pipeline to use. Defined elsewhere in this package.
+     * @param deviceId The ID of the device.
+     * @param cameraDevice The camera itself.
+     * @param deviceName The name of the device. */
     public Webcam(OpenCvPipeline pipeline, int deviceId, WebcamName cameraDevice, String deviceName) {
         this.deviceName = deviceName;
         this.deviceId = deviceId;

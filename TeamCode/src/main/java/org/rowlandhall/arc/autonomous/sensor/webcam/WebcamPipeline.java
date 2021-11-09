@@ -14,7 +14,8 @@ public class WebcamPipeline extends OpenCvPipeline {
     /** Creates a new webcam pipelines. Nothing special. */
     public WebcamPipeline() {}
 
-    /** Does what the function signature says it does; processes a frame. */
+    /** Does what the function signature says it does; processes a frame.
+     * @param input The input "frame" to process. */
     @Override
     public Mat processFrame(Mat input) {
         // Draw a simple box around the middle 1/2 of the entire frame.

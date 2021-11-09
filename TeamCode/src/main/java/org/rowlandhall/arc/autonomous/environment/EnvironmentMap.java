@@ -64,7 +64,8 @@ public class EnvironmentMap {
         throw new NoActiveEntityException();
     }
 
-    /** Returns all the entities with a specific type. */
+    /** Returns all the entities with a specific type.
+     * @param type The type of entity we need to look for. */
     public ArrayList<Entity> getEntitiesWithType(Entity type) {
         ArrayList<Entity> ret = new ArrayList();
         for (Entity e : entities) {
@@ -76,20 +77,23 @@ public class EnvironmentMap {
         return ret;
     }
 
-    /** Add an entity to track. */
+    /** Add an entity to track.
+     * @param entity The entity to add. */
     public void addEntity(Entity entity) {
         this.entities.add(entity);
     }
 
     /** Add multiple entities at a time. This shouldn't really ever be called,
-     * but we could take a route that would use this. */
+     * but we could take a route that would use this.
+     * @param entities The (multiple) entities to add. */
     public void addEntities(ArrayList<Entity> entities) {
         for (Entity entity : entities) {
             this.addEntity(entity);
         }
     }
 
-    /** Sets all the enties; doesn't append. */
+    /** Sets all the enties; doesn't append.
+     * @param new_entities The entities to set as everything. */
     public void setAllEntities(ArrayList<Entity> new_entities) {
         entities = new_entities;
     }

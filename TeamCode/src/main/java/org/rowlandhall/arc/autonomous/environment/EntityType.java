@@ -6,10 +6,14 @@ public enum EntityType {
 
     private int numVal;
 
+    /** Constructs a new entity. Gives the enum a specific numeric number,
+     * so we can find out what kind of entity this is, later.
+     * @param numVal The numeric value. */
     EntityType(int numVal) {
         this.numVal = numVal;
     }
 
+    /** Gets the numeric value associated with this specific enum instance. */
     public int getValue() {
         return numVal;
     }

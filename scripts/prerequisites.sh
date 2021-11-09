@@ -31,8 +31,8 @@ then
     exit
 fi
 
-INITIAL_DIR=`pwd`
-TEAMCODE_DIR="`pwd`/TeamCode/src/main/java/org/rowlandhall/arc"
+INITIAL_DIR=$(pwd)
+TEAMCODE_DIR="$INITIAL_DIR/TeamCode/src/main/java/org/rowlandhall/arc"
 ROADRUNNER_CONTAINED_DIR=$TEAMCODE_DIR/lib/roadrunner/
 
 roadrunner() {
@@ -55,27 +55,27 @@ roadrunner() {
 
     # Move all the files we need into the correct directory
     progress mv "Moving files...."
-    mkdir -p $ROADRUNNER_CONTAINED_DIR
+    mkdir -p "$ROADRUNNER_CONTAINED_DIR"
 
-    mv -f drive $ROADRUNNER_CONTAINED_DIR
-    mv trajectorysequence $ROADRUNNER_CONTAINED_DIR
-    mv util $ROADRUNNER_CONTAINED_DIR
+    mv -f drive "$ROADRUNNER_CONTAINED_DIR"
+    mv trajectorysequence "$ROADRUNNER_CONTAINED_DIR"
+    mv util "$ROADRUNNER_CONTAINED_DIR"
 
     # Go back to where we were
-    cd $INITIAL_DIR
+    cd "$INITIAL_DIR"
 }
 
 roadrunner_clean() {
     progress rm "Removing files...."
-    rm -rf $ROADRUNNER_CONTAINED_DIR/drive
-    rm -rf $ROADRUNNER_CONTAINED_DIR/trajectorysequence
-    rm -rf $ROADRUNNER_CONTAINED_DIR/util
+    rm -rf "$ROADRUNNER_CONTAINED_DIR/drive"
+    rm -rf "$ROADRUNNER_CONTAINED_DIR/trajectorysequence"
+    rm -rf "$ROADRUNNER_CONTAINED_DIR/util"
 }
 
 download_prerequisites() {
     # Init code
     mkdir -p tmp/dep
-    mkdir -p $ROADRUNNER_CONTAINED_DIR
+    mkdir -p "$ROADRUNNER_CONTAINED_DIR"
 
     roadrunner
 }

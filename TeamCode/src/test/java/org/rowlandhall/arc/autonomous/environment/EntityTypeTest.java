@@ -2,9 +2,7 @@ package org.rowlandhall.arc.environment.test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import org.rowlandhall.arc.autonomous.environment.EntityType;

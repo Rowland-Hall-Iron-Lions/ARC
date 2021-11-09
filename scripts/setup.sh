@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 SETUP_LOCKFILE_NAME="./.setup.lock"
-SHELL_NAME=$(basename $SHELL)
-JAVA_VERSION=$(java -version 2>&1 | grep -i version | cut -d'"' -f2 | cut -d'.' -f1-2)
+SHELL_NAME="$(basename $SHELL)"
+JAVA_VERSION="$(java -version 2>&1 | grep -i version | cut -d'"' -f2 | cut -d'.' -f1-2)"
 TARGET_JAVA_VERSION=11.0
 SDKMAN_JAVA_INSTALL=11.0.11.hs-adpt
 FORCE_JAVA=true

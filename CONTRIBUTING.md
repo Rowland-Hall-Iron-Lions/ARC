@@ -5,23 +5,23 @@ Hello, new (or returning developer)! To facilitate the smooth development of our
 In August of last year, Github deprecated passwords when pushing code to a remote (a repository hosted on the cloud, e.g. someone else's computer). Instead, they want you to use a Personal Access Token (PAT). Think of a PAT like a password, but you can have more than once, and each has different permissions. Don't worry, for now, you can have a single PAT that controls everything (you may want to create a unique one for each computer, in case one gets compromised).
 
 Here's how you may create a PAT:
- 1. Go to [your profile](https://github.com)
+1. Go to [your profile](https://github.com)
 
- 2. Go to [your settings](https://github.com/settings/profile)
+2. Go to [your settings](https://github.com/settings/profile)
 
- 3. Go to [developer settings](https://github.com/settings/apps), then to [Personal Access Tokens](https://github.com/settings/tokens)
+3. Go to [developer settings](https://github.com/settings/apps), then to [Personal Access Tokens](https://github.com/settings/tokens)
 
- 4. Click [Generate New Token](https://github.com/settings/tokens/new)
+4. Click [Generate New Token](https://github.com/settings/tokens/new)
 
- 5. Change the note to your computers name (e.g. "School Computer")
+5. Change the note to your computers name (e.g. "School Computer")
 
- 6. Set the expiration to never. This is not very secure, but you can always revoke your token if someone breaks into your account.
+6. Set the expiration to never. This is not very secure, but you can always revoke your token if someone breaks into your account.
 
- 10. Check the boxes you want this PAT to control. At the very minimum, include `repo`, and everything under it.
+10. Check the boxes you want this PAT to control. At the very minimum, include `repo`, and everything under it.
 
- 11. Click Generate Token.
+11. Click Generate Token.
 
- 12. **Do not exit this page, and make sure to copy your key to your clipboard for now.**
+12. **Do not exit this page, and make sure to copy your key to your clipboard for now.**
 
 Your token should like roughly like this (I have since revoked this token, it will not work on my account):
 ```
@@ -215,4 +215,3 @@ In order to solve them on your computer, follow the instructions on Github.
 
 # Frågor (Questions)
 File a Github issue or contact me at my email, [milobanks@rowlandhall.org](mailto:milobanks@rowlandhall.org).
-

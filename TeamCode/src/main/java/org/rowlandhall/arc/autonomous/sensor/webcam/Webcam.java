@@ -11,6 +11,11 @@ import org.rowlandhall.arc.logging.*;
 import org.rowlandhall.arc.AutonomousMode;
 import org.rowlandhall.arc.autonomous.sensor.Sensor;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import android.content.Context;
+
 /** Class for interacting (and quasi-processing) of webcame data. */
 public class Webcam implements Sensor {
     /** Webcam object */
@@ -74,5 +79,38 @@ public class Webcam implements Sensor {
         AutonomousMode.getTelemetry().addData("Pipeline time ms", webcam.getPipelineTimeMs());
         AutonomousMode.getTelemetry().addData("Overhead time ms", webcam.getOverheadTimeMs());
         AutonomousMode.getTelemetry().addData("Theoretical max FPS", webcam.getCurrentPipelineMaxFps());
+    }
+
+    /** Populates and initializes all the webcams we pass in.
+     * Note that all the IDs that we put as keys need to be 
+     * mentioned in some configuration file somewhere. 
+     *
+     * note: The author of this code (Milo Banks), doesn't
+     * know what this configuration file is. All they know
+     * is that this is mentioned in the example code for 
+     * Easy OpenCV. */
+    public static HashMap<String, WebcamData> populateWebcams(String[] names, Context app_context) {
+        HashMap<String, WebcamData> webcams = new HashMap<String, WebcamData>();
+
+        for (String name : names) {
+            webcams.put(name, null);
+        }
+
+        for (Map.Entry<String, WebcamData> entry : webcams.entrySet()) {
+            int id = app_context.getResources().getIdentifier(entry.getKey(), "id", app_context.getPackageName());
+
+            entry.setValue(
+                new WebcamData(id,
+                    new Webcam(
+                        new WebcamPipeline(),
+                        id,
+                        AutonomousMode.getHardwareMap().get(WebcamName.class, entry.getKey()),
+                        entry.getKey()
+                    )
+                )
+            );
+        }
+
+        return webcams;
     }
 }

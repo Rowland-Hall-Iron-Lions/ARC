@@ -6,6 +6,8 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
+import org.rowlandhall.arc.detection.ObjectDetection;
+
 /** The OpenCV pipeline for the webcam; what all the frames go through
  * to get processed. */
 public class WebcamPipeline extends OpenCvPipeline {

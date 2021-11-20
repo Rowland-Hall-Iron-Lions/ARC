@@ -24,5 +24,8 @@ dependencies {
 
     // Roadrunner dependency
     implementation 'com.acmerobotics.dashboard:dashboard:0.4.3'
+
+    // Tensorflow lite
+    implementation 'org.tensorflow:tensorflow-lite:2.7.0'
 }
 

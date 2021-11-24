@@ -32,14 +32,15 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-//import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-//import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -80,6 +81,14 @@ public class StarterTeleOp extends OpMode
         backL  = hardwareMap.get(DcMotor.class, "Back Left");
         backR = hardwareMap.get(DcMotor.class, "Back Right");
 
+        /** Sets the motors to run using encoders. */
+        frontL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        frontR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        backL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        backR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
+
         /** Most robots need the motor on one side to be reversed to drive forward.
         * Reverse the motor that runs backwards when connected directly to the battery. */
         frontL.setDirection(DcMotor.Direction.FORWARD);
@@ -106,28 +115,47 @@ public class StarterTeleOp extends OpMode
     @Override
     public void loop() {
         /** Setup a variable for each drive wheel to save power level for telemetry. */
-        double leftPower;
-        double rightPower;
+        double leftFPower ;
+        double rightFPower;
+        double leftBPower ;
+        double rightBPower;
 
         /**POV Mode uses right stick to go forward, and left stick to turn
          *  will be combined in later release.
          *  This uses basic math to combine motions and is easier to drive straight. */
-        double drive = -gamepad1.left_stick_x;
-        double turn  =  gamepad1.right_stick_y;
-        leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
-        rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
+        double drive = -gamepad1.right_stick_y;
+        double turn  =  gamepad1.right_stick_x;
+        double strafe = gamepad1.left_stick_x;
 
-
+         if (strafe !=0){
+            /** Untested on the robot. May need to be reversed or changed entirely. */
+             leftFPower = -strafe;
+             rightFPower = strafe;
+             leftBPower =  strafe;
+             rightBPower = -strafe;
+        }
+        else if(drive !=0 || turn !=0) {
+          leftFPower = Range.clip(drive + turn, -1.0, 1.0);
+            rightFPower = Range.clip(drive - turn, -1.0, 1.0);
+            leftBPower = Range.clip(drive + turn, -1.0, 1.0);
+            rightBPower = Range.clip(drive - turn, -1.0, 1.0);
+        }
+        else{
+            leftFPower = 0;
+            rightFPower = 0;
+            leftBPower = 0;
+            rightBPower = 0;
+        }
 
         /**Send calculated power to wheels. */
-        frontL.setPower(leftPower);
-        backL.setPower(leftPower);
-        frontR.setPower(rightPower);
-        backR.setPower(rightPower);
+        frontL.setPower(leftFPower);
+        backL.setPower(leftBPower);
+        frontR.setPower(rightFPower);
+        backR.setPower(rightBPower);
 
         /**  Show the elapsed game time and wheel power. */
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
+        telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftFPower, rightFPower);
     }
 
     /** Code to run ONCE after the driver hits STOP. */

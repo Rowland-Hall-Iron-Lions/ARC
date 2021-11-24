@@ -8,7 +8,7 @@
 .setup.lock
 
 # Don't include the already downloaded libraries
-Teamcode/src/main/java/**lib/
+**lib/
 
 # Built application files
 *.apk

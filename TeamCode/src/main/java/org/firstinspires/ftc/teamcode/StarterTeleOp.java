@@ -53,38 +53,35 @@ import com.qualcomm.robotcore.util.Range;
  * It includes all the skeletal structure that all iterative OpModes contain.
  *
  * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
- * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
- */
+ * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list. */
 
 @TeleOp(name="Basic: Iterative OpMode", group="Iterative Opmode")
 //
 // @Disabled
 public class StarterTeleOp extends OpMode
 {
-    /** Declare OpMode members.*/
+    /** Declare OpMode members. */
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor frontL = null;
     private DcMotor frontR = null;
     private DcMotor backL = null;
     private DcMotor backR = null;
 
-    /*
-     * Code to run ONCE when the driver hits INIT
-     */
+    /** Code to run ONCE when the driver hits INIT. */
     @Override
     public void init() {
         telemetry.addData("Status", "Initializing");
 
         /** Initialize the hardware variables. Note that the strings used here as parameters
         * to 'get' must correspond to the names assigned during the robot configuration
-        * step (using the FTC Robot Controller app on the phone).*/
+        * step (using the FTC Robot Controller app on the phone). */
         frontL  = hardwareMap.get(DcMotor.class, "Front Left");
         frontR = hardwareMap.get(DcMotor.class, "Front Right");
         backL  = hardwareMap.get(DcMotor.class, "Back Left");
         backR = hardwareMap.get(DcMotor.class, "Back Right");
 
-        /** Most robots need the motor on one side to be reversed to drive forward
-        * Reverse the motor that runs backwards when connected directly to the battery */
+        /** Most robots need the motor on one side to be reversed to drive forward.
+        * Reverse the motor that runs backwards when connected directly to the battery. */
         frontL.setDirection(DcMotor.Direction.FORWARD);
         backL.setDirection(DcMotor.Direction.FORWARD);
         frontR.setDirection(DcMotor.Direction.REVERSE);
@@ -94,28 +91,26 @@ public class StarterTeleOp extends OpMode
         telemetry.addData("Status", "Initialized");
     }
 
-    /**
-     * Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
-     */
+    /** Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY. */
     @Override
     public void init_loop() {
     }
 
-    /** Code to run ONCE when the driver hits PLAY */
+    /** Code to run ONCE when the driver hits PLAY. */
     @Override
     public void start() {
         runtime.reset();
     }
 
-    /** Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP*/
+    /** Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP. */
     @Override
     public void loop() {
-        /** Setup a variable for each drive wheel to save power level for telemetry */
+        /** Setup a variable for each drive wheel to save power level for telemetry. */
         double leftPower;
         double rightPower;
 
         /**POV Mode uses right stick to go forward, and left stick to turn
-         *  will be combined in later release
+         *  will be combined in later release.
          *  This uses basic math to combine motions and is easier to drive straight. */
         double drive = -gamepad1.left_stick_x;
         double turn  =  gamepad1.right_stick_y;
@@ -124,7 +119,7 @@ public class StarterTeleOp extends OpMode
 
 
 
-        /**Send calculated power to wheels */
+        /**Send calculated power to wheels. */
         frontL.setPower(leftPower);
         backL.setPower(leftPower);
         frontR.setPower(rightPower);
@@ -135,7 +130,7 @@ public class StarterTeleOp extends OpMode
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
     }
 
-    /** Code to run ONCE after the driver hits STOP*/
+    /** Code to run ONCE after the driver hits STOP. */
     @Override
     public void stop() {
     }

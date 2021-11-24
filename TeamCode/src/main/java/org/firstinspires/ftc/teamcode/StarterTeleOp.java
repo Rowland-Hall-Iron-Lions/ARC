@@ -43,8 +43,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-/**
- * This file contains an example of an iterative (Non-Linear) "OpMode".
+/** This file contains an example of an iterative (Non-Linear) "OpMode".
  * An OpMode is a 'program' that runs in either the autonomous or the teleop period of an FTC match.
  * The names of OpModes appear on the menu of the FTC Driver Station.
  * When an selection is made from the menu, the corresponding OpMode
@@ -102,26 +101,22 @@ public class StarterTeleOp extends OpMode
     public void init_loop() {
     }
 
-    /**
-     * Code to run ONCE when the driver hits PLAY
-     */
+    /** Code to run ONCE when the driver hits PLAY */
     @Override
     public void start() {
         runtime.reset();
     }
 
-    /**
-     * Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
-     */
+    /** Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP*/
     @Override
     public void loop() {
         /** Setup a variable for each drive wheel to save power level for telemetry */
         double leftPower;
         double rightPower;
 
-        /**POV Mode uses right stick to go forward, and left stick to turn.
-         * will be combined in later release
-        *  This uses basic math to combine motions and is easier to drive straight. */
+        /**POV Mode uses right stick to go forward, and left stick to turn
+         *  will be combined in later release
+         *  This uses basic math to combine motions and is easier to drive straight. */
         double drive = -gamepad1.left_stick_x;
         double turn  =  gamepad1.right_stick_y;
         leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
@@ -140,9 +135,7 @@ public class StarterTeleOp extends OpMode
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
     }
 
-    /**
-     * Code to run ONCE after the driver hits STOP
-     */
+    /** Code to run ONCE after the driver hits STOP*/
     @Override
     public void stop() {
     }

@@ -60,7 +60,8 @@ However, if you are an enterprising person, you may want to do things "the old-f
 That's it. `gradlew` is a script that downloads Gradle and runs the commands for you, so there's no fuss! This README will be extended to contain instructions on how to run this "binary" from the command line when we figure it out.
 
 ## libOpenCvAndroid.so
-For Easy Open Cv to work you have to download the `libOpenCvAndroid.so` file and copy it to the robot controller; you can find download and further instructions [here](https://github.com/OpenFTC/EasyOpenCV)
+For Easy Open Cv to work you have to download the `libOpenCvAndroid.so` file and copy it to the robot controller inside of the FIRST folder; you can find download and further instructions [here](https://github.com/OpenFTC/EasyOpenCV) If there is a error you might need to rename it whatever file the error says is missing.
+
 
 ## Författare och meriter (Authors and credits)
 ### Programvaruingenjörer (Software engineers)

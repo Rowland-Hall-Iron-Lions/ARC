@@ -52,7 +52,6 @@ import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="Starter TeleOp", group="Iterative Opmode")
 
-
 // @Disabled
 public class StarterTeleOp extends OpMode
 {
@@ -64,9 +63,6 @@ public class StarterTeleOp extends OpMode
     private DcMotor backR = null;
     private Servo intakeL = null;
     private Servo intakeR = null;
-
-
-
 
     /** Code to run ONCE when the driver hits INIT. */
     @Override
@@ -83,20 +79,13 @@ public class StarterTeleOp extends OpMode
         intakeL = hardwareMap.get(Servo.class, "Left Intake");
         intakeR = hardwareMap.get(Servo.class, "Right Intake");
 
-
-
-
-
-
-        /** Sets the motors to run using encoders. */
+        /* Sets the motors to run using encoders. */
         frontL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         frontR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-
-
-        /** Most robots need the motor on one side to be reversed to drive forward.
+        /* Most robots need the motor on one side to be reversed to drive forward.
         * Reverse the motor that runs backwards when connected directly to the battery. */
         frontL.setDirection(DcMotor.Direction.FORWARD);
         backL.setDirection(DcMotor.Direction.FORWARD);
@@ -106,7 +95,7 @@ public class StarterTeleOp extends OpMode
         intakeR.setDirection(Servo.Direction.FORWARD);
 
 
-        /** Tell the driver that initialization is complete. */
+        /* Tell the driver that initialization is complete. */
         telemetry.addData("Status", "Initialized");
     }
 
@@ -127,7 +116,7 @@ public class StarterTeleOp extends OpMode
     /** Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP. */
     @Override
     public void loop() {
-        /** Setup a variable for each drive wheel to save power level for telemetry. */
+        /* Setup a variable for each drive wheel to save power level for telemetry. */
         double leftFPower ;
         double rightFPower;
         double leftBPower ;
@@ -135,11 +124,7 @@ public class StarterTeleOp extends OpMode
         int intakeServoPos =0;
 
 
-
-
-
-
-        /**uses right stick to move forward and turn.
+        /* Uses right stick to move forward and turn.
          * left stick to strafe.
          *  This uses basic math to combine motions and is easier to drive straight. */
         double drive = -gamepad1.right_stick_x;
@@ -147,30 +132,26 @@ public class StarterTeleOp extends OpMode
         double strafe = gamepad1.left_stick_x;
         boolean intakePower = gamepad1.a;
 
-
-
-
          if (strafe !=0 ) {
-            /** Strafing */
+             /** Strafing */
              leftFPower = -strafe;
              rightFPower = strafe;
              leftBPower =  strafe;
              rightBPower = -strafe;
         }
 
-        else if (drive !=0 || turn !=0) {
+        else if (drive != 0 || turn != 0) {
           leftFPower = Range.clip(drive + turn, -1.0, 1.0);
-            rightFPower = Range.clip(drive - turn, -1.0, 1.0);
-            leftBPower = Range.clip(drive + turn, -1.0, 1.0);
-            rightBPower = Range.clip(drive - turn, -1.0, 1.0);
-        }
-
-        else{
+          rightFPower = Range.clip(drive - turn, -1.0, 1.0);
+          leftBPower = Range.clip(drive + turn, -1.0, 1.0);
+          rightBPower = Range.clip(drive - turn, -1.0, 1.0);
+        } else {
             leftFPower = 0;
             rightFPower = 0;
             leftBPower = 0;
             rightBPower = 0;
         }
+
         while (intakePower) {
             intakeServoPos +=1;
             intakeL.setPosition(intakeServoPos);
@@ -195,5 +176,4 @@ public class StarterTeleOp extends OpMode
     @Override
     public void stop() {
     }
-
 }

@@ -2,7 +2,7 @@ package org.rowlandhall.arc.autonomous.environment;
 
 /** Enum containing all the possible things we could detect. */
 public enum EntityType {
-    ROBOT(0), GENERIC(1);
+    ROBOT(0), GENERIC(1), IMAGE(2);
 
     private int numVal;
 

@@ -132,7 +132,7 @@ public class StarterTeleOp extends OpMode
         double strafe = gamepad1.left_stick_x;
         boolean intakePower = gamepad1.a;
 
-         if (strafe !=0 ) {
+         if (strafe != 0 ) {
              /** Strafing */
              leftFPower = -strafe;
              rightFPower = strafe;
@@ -175,5 +175,6 @@ public class StarterTeleOp extends OpMode
     /** Code to run ONCE after the driver hits STOP. */
     @Override
     public void stop() {
+
     }
 }

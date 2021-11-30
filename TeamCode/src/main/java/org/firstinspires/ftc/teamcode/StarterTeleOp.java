@@ -122,7 +122,7 @@ public class StarterTeleOp extends OpMode
     public void start() {
         runtime.reset();
     }
-    int intakeServoPos =0;
+
 
     /** Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP. */
     @Override
@@ -132,6 +132,8 @@ public class StarterTeleOp extends OpMode
         double rightFPower;
         double leftBPower ;
         double rightBPower;
+        int intakeServoPos =0;
+
 
 
 
@@ -169,12 +171,11 @@ public class StarterTeleOp extends OpMode
             leftBPower = 0;
             rightBPower = 0;
         }
-        if (intakePower == true) {
+        while (intakePower == true) {
             intakeServoPos +=1;
             intakeL.setPosition(intakeServoPos);
             intakeR.setPosition(intakeServoPos);
         }
-        else {intakeServoPos = 0;}
 
 
 

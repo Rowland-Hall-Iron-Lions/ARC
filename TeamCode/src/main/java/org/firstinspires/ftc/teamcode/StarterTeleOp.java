@@ -171,7 +171,7 @@ public class StarterTeleOp extends OpMode
             leftBPower = 0;
             rightBPower = 0;
         }
-        while (intakePower == true) {
+        while (intakePower) {
             intakeServoPos +=1;
             intakeL.setPosition(intakeServoPos);
             intakeR.setPosition(intakeServoPos);

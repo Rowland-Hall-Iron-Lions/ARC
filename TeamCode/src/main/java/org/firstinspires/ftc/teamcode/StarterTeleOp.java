@@ -133,7 +133,7 @@ public class StarterTeleOp extends OpMode
         boolean intakePower = gamepad1.a;
 
          if (strafe != 0 ) {
-             /** Strafing */
+             /* Strafing */
              leftFPower = -strafe;
              rightFPower = strafe;
              leftBPower =  strafe;

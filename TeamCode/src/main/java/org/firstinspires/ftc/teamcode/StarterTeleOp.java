@@ -61,8 +61,7 @@ public class StarterTeleOp extends OpMode
     private DcMotor frontR = null;
     private DcMotor backL = null;
     private DcMotor backR = null;
-    private DcMotor intakeL = null;
-    private DcMotor intakeR = null;
+
 
 
 
@@ -78,8 +77,7 @@ public class StarterTeleOp extends OpMode
         frontR = hardwareMap.get(DcMotor.class, "Front Right");
         backL  = hardwareMap.get(DcMotor.class, "Back Left");
         backR = hardwareMap.get(DcMotor.class, "Back Right");
-        intakeL = hardwareMap.get(DcMotor.class, "lIntake");
-        intakeR = hardwareMap.get(DcMotor.class, "rIntake");
+
 
 
 
@@ -88,8 +86,7 @@ public class StarterTeleOp extends OpMode
         frontR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        intakeL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        intakeR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
 
         /** Most robots need the motor on one side to be reversed to drive forward.
@@ -98,8 +95,7 @@ public class StarterTeleOp extends OpMode
         backL.setDirection(DcMotor.Direction.FORWARD);
         frontR.setDirection(DcMotor.Direction.REVERSE);
         backR.setDirection(DcMotor.Direction.REVERSE);
-        intakeL.setDirection(DcMotor.Direction.FORWARD);
-        intakeR.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
         /** Tell the driver that initialization is complete. */
         telemetry.addData("Status", "Initialized");
@@ -127,7 +123,7 @@ public class StarterTeleOp extends OpMode
         double rightFPower;
         double leftBPower ;
         double rightBPower;
-        double intakePower=0;
+
 
 
 
@@ -137,12 +133,9 @@ public class StarterTeleOp extends OpMode
         double drive = -gamepad1.right_stick_x;
         double turn  =  gamepad1.right_stick_y;
         double strafe = gamepad1.left_stick_x;
-        boolean intake = gamepad1.a;
 
-        while (intake == false) {
-            intakePower = 1;
 
-        }
+
 
          if (strafe !=0){
             /** Untested on the robot. May need to be reversed or changed entirely. */
@@ -171,7 +164,7 @@ public class StarterTeleOp extends OpMode
         backL.setPower(leftBPower);
         frontR.setPower(rightFPower);
         backR.setPower(rightBPower);
-        intakeL.setPower(intakePower);
+
 
         /**  Show the elapsed game time and wheel power. */
         telemetry.addData("Status", "Run Time: " + runtime.toString());

@@ -32,6 +32,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -61,6 +62,8 @@ public class StarterTeleOp extends OpMode
     private DcMotor frontR = null;
     private DcMotor backL = null;
     private DcMotor backR = null;
+    private Servo intakeL = null;
+    private Servo intakeR = null;
 
 
 
@@ -77,6 +80,10 @@ public class StarterTeleOp extends OpMode
         frontR = hardwareMap.get(DcMotor.class, "Front Right");
         backL  = hardwareMap.get(DcMotor.class, "Back Left");
         backR = hardwareMap.get(DcMotor.class, "Back Right");
+        intakeL = hardwareMap.get(Servo.class, "Left Intake");
+        intakeR = hardwareMap.get(Servo.class, "Right Intake");
+
+
 
 
 
@@ -95,6 +102,8 @@ public class StarterTeleOp extends OpMode
         backL.setDirection(DcMotor.Direction.FORWARD);
         frontR.setDirection(DcMotor.Direction.REVERSE);
         backR.setDirection(DcMotor.Direction.REVERSE);
+        intakeL.setDirection(Servo.Direction.REVERSE);
+        intakeR.setDirection(Servo.Direction.FORWARD);
 
 
         /** Tell the driver that initialization is complete. */
@@ -113,7 +122,7 @@ public class StarterTeleOp extends OpMode
     public void start() {
         runtime.reset();
     }
-
+    int intakeServoPos =0;
 
     /** Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP. */
     @Override
@@ -127,25 +136,27 @@ public class StarterTeleOp extends OpMode
 
 
 
-        /**POV Mode uses right stick to go forward, and left stick to turn
-         *  will be combined in later release.
+
+        /**uses right stick to move forward and turn.
+         * left stick to strafe.
          *  This uses basic math to combine motions and is easier to drive straight. */
         double drive = -gamepad1.right_stick_x;
         double turn  =  gamepad1.right_stick_y;
         double strafe = gamepad1.left_stick_x;
+        boolean intakePower = gamepad1.a;
 
 
 
 
-         if (strafe !=0){
-            /** Untested on the robot. May need to be reversed or changed entirely. */
+         if (strafe !=0 ) {
+            /** Strafing */
              leftFPower = -strafe;
              rightFPower = strafe;
              leftBPower =  strafe;
              rightBPower = -strafe;
         }
 
-        else if(drive !=0 || turn !=0) {
+        else if (drive !=0 || turn !=0) {
           leftFPower = Range.clip(drive + turn, -1.0, 1.0);
             rightFPower = Range.clip(drive - turn, -1.0, 1.0);
             leftBPower = Range.clip(drive + turn, -1.0, 1.0);
@@ -158,6 +169,14 @@ public class StarterTeleOp extends OpMode
             leftBPower = 0;
             rightBPower = 0;
         }
+        if (intakePower == true) {
+            intakeServoPos +=1;
+            intakeL.setPosition(intakeServoPos);
+            intakeR.setPosition(intakeServoPos);
+        }
+        else {intakeServoPos = 0;}
+
+
 
         /**Send calculated power to wheels. */
         frontL.setPower(leftFPower);

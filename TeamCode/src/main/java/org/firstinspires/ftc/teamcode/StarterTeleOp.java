@@ -31,6 +31,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -62,6 +63,8 @@ public class StarterTeleOp extends OpMode
     private DcMotor backR = null;
 
 
+
+
     /** Code to run ONCE when the driver hits INIT. */
     @Override
     public void init() {
@@ -76,11 +79,14 @@ public class StarterTeleOp extends OpMode
         backR = hardwareMap.get(DcMotor.class, "Back Right");
 
 
+
+
         /** Sets the motors to run using encoders. */
         frontL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         frontR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
 
         /** Most robots need the motor on one side to be reversed to drive forward.
@@ -89,6 +95,7 @@ public class StarterTeleOp extends OpMode
         backL.setDirection(DcMotor.Direction.FORWARD);
         frontR.setDirection(DcMotor.Direction.REVERSE);
         backR.setDirection(DcMotor.Direction.REVERSE);
+
 
         /** Tell the driver that initialization is complete. */
         telemetry.addData("Status", "Initialized");
@@ -118,12 +125,16 @@ public class StarterTeleOp extends OpMode
         double rightBPower;
 
 
+
+
         /**POV Mode uses right stick to go forward, and left stick to turn
          *  will be combined in later release.
          *  This uses basic math to combine motions and is easier to drive straight. */
-        double drive = -gamepad1.right_stick_y;
-        double turn  =  gamepad1.right_stick_x;
+        double drive = -gamepad1.right_stick_x;
+        double turn  =  gamepad1.right_stick_y;
         double strafe = gamepad1.left_stick_x;
+
+
 
 
          if (strafe !=0){
@@ -154,9 +165,10 @@ public class StarterTeleOp extends OpMode
         frontR.setPower(rightFPower);
         backR.setPower(rightBPower);
 
+
         /**  Show the elapsed game time and wheel power. */
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftFPower, rightFPower);
+        telemetry.addData("Motors", "front left (%.2f), front right (%.2f), back left (%.2f), back right (%.2f)", leftFPower, rightFPower,leftBPower, rightBPower);
     }
 
     /** Code to run ONCE after the driver hits STOP. */

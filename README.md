@@ -65,15 +65,13 @@ For Easy Open Cv to work you have to download the `libOpenCvAndroid.so` file and
 
 ## Författare och meriter (Authors and credits)
 ### Programvaruingenjörer (Software engineers)
- 1. Rapheal Andrea
+ 1. Milo Banks
 
- 2. Milo Banks
+ 2. Aurora Chichos/Chicken
 
- 3. Aurora Chichos/Chicken
+ 3. Jack Revoy
 
- 4. Jack Revoy
-
- 5. Teo Welton
+ 4. Teo Welton
 
 ### Bibliotek används (Libraries used)
 ##### Driver for our code (pun intended!)

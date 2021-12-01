@@ -135,10 +135,10 @@ public class StarterTeleOp extends OpMode
 
          if (strafe != 0 ) {
              /* Strafing */
-             leftFPower = -strafe;
-             rightFPower = strafe;
-             leftBPower =  strafe;
-             rightBPower = -strafe;
+             leftFPower = strafe;
+             rightFPower = -strafe;
+             leftBPower =  -strafe;
+             rightBPower = strafe;
         }
 
         else if (drive != 0 || turn != 0) {

@@ -30,6 +30,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -61,8 +62,8 @@ public class StarterTeleOp extends OpMode
     private DcMotor frontR = null;
     private DcMotor backL = null;
     private DcMotor backR = null;
-    private Servo intakeL = null;
-    private Servo intakeR = null;
+    private CRServo intakeL = null;
+    private CRServo intakeR = null;
 
     /** Code to run ONCE when the driver hits INIT. */
     @Override
@@ -76,8 +77,8 @@ public class StarterTeleOp extends OpMode
         frontR = hardwareMap.get(DcMotor.class, "Front Right");
         backL  = hardwareMap.get(DcMotor.class, "Back Left");
         backR = hardwareMap.get(DcMotor.class, "Back Right");
-        intakeL = hardwareMap.get(Servo.class, "Left Intake");
-        intakeR = hardwareMap.get(Servo.class, "Right Intake");
+        intakeL = hardwareMap.get(CRServo.class, "Left Intake");
+        intakeR = hardwareMap.get(CRServo.class, "Right Intake");
 
         /* Sets the motors to run using encoders. */
         frontL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -91,8 +92,8 @@ public class StarterTeleOp extends OpMode
         backL.setDirection(DcMotor.Direction.FORWARD);
         frontR.setDirection(DcMotor.Direction.REVERSE);
         backR.setDirection(DcMotor.Direction.REVERSE);
-        intakeL.setDirection(Servo.Direction.REVERSE);
-        intakeR.setDirection(Servo.Direction.FORWARD);
+        intakeL.setDirection(CRServo.Direction.REVERSE);
+        intakeR.setDirection(CRServo.Direction.FORWARD);
 
 
         /* Tell the driver that initialization is complete. */
@@ -121,7 +122,7 @@ public class StarterTeleOp extends OpMode
         double rightFPower;
         double leftBPower ;
         double rightBPower;
-        int intakeServoPos =0;
+        double intakePow;
 
 
         /* Uses right stick to move forward and turn.
@@ -130,7 +131,7 @@ public class StarterTeleOp extends OpMode
         double drive = -gamepad1.right_stick_x;
         double turn  =  gamepad1.right_stick_y;
         double strafe = gamepad1.left_stick_x;
-        boolean intakePower = gamepad1.a;
+        boolean isIntake = gamepad1.x;
 
          if (strafe != 0 ) {
              /* Strafing */
@@ -152,24 +153,26 @@ public class StarterTeleOp extends OpMode
             rightBPower = 0;
         }
 
-        while (intakePower) {
-            intakeServoPos +=1;
-            intakeL.setPosition(intakeServoPos);
-            intakeR.setPosition(intakeServoPos);
+        if (isIntake){
+            intakePow= 1 ;
         }
+        else {intakePow = 0;}
 
 
 
-        /**Send calculated power to wheels. */
+        /* Send calculated power to wheels. */
         frontL.setPower(leftFPower);
         backL.setPower(leftBPower);
         frontR.setPower(rightFPower);
         backR.setPower(rightBPower);
+        intakeR.setPower(intakePow);
+        intakeL.setPower(intakePow);
 
 
         /**  Show the elapsed game time and wheel power. */
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "front left (%.2f), front right (%.2f), back left (%.2f), back right (%.2f)", leftFPower, rightFPower,leftBPower, rightBPower);
+        telemetry.addData("Servos",intakePow);
     }
 
     /** Code to run ONCE after the driver hits STOP. */

@@ -32,7 +32,6 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
@@ -64,6 +63,7 @@ public class StarterTeleOp extends OpMode
     private DcMotor backR = null;
     private CRServo intakeL = null;
     private CRServo intakeR = null;
+    private Servo claw = null;
 
     /** Code to run ONCE when the driver hits INIT. */
     @Override
@@ -79,6 +79,7 @@ public class StarterTeleOp extends OpMode
         backR = hardwareMap.get(DcMotor.class, "Back Right");
         intakeL = hardwareMap.get(CRServo.class, "Left Intake");
         intakeR = hardwareMap.get(CRServo.class, "Right Intake");
+        claw = hardwareMap.get(Servo.class, "claw");
 
         /* Sets the motors to run using encoders. */
         frontL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -94,6 +95,7 @@ public class StarterTeleOp extends OpMode
         backR.setDirection(DcMotor.Direction.REVERSE);
         intakeL.setDirection(CRServo.Direction.REVERSE);
         intakeR.setDirection(CRServo.Direction.FORWARD);
+
 
 
         /* Tell the driver that initialization is complete. */
@@ -123,6 +125,7 @@ public class StarterTeleOp extends OpMode
         double leftBPower ;
         double rightBPower;
         double intakePow;
+        double clawPow;
 
 
         /* Uses right stick to move forward and turn.
@@ -131,7 +134,8 @@ public class StarterTeleOp extends OpMode
         double drive = -gamepad1.right_stick_x;
         double turn  =  gamepad1.right_stick_y;
         double strafe = gamepad1.left_stick_x;
-        boolean isIntake = gamepad1.x;
+        boolean isIntake = gamepad1.a;
+        boolean isClaw = gamepad1.x;
 
          if (strafe != 0 ) {
              /* Strafing */
@@ -158,7 +162,11 @@ public class StarterTeleOp extends OpMode
         }
         else {intakePow = 0;}
 
+        if (isClaw) {
+            //pain
+            claw.setPosition(5);
 
+        }
 
         /* Send calculated power to wheels. */
         frontL.setPower(leftFPower);
@@ -172,7 +180,7 @@ public class StarterTeleOp extends OpMode
         /**  Show the elapsed game time and wheel power. */
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "front left (%.2f), front right (%.2f), back left (%.2f), back right (%.2f)", leftFPower, rightFPower,leftBPower, rightBPower);
-        telemetry.addData("Servos",intakePow);
+        telemetry.addData("Intake Servos",intakePow);
     }
 
     /** Code to run ONCE after the driver hits STOP. */

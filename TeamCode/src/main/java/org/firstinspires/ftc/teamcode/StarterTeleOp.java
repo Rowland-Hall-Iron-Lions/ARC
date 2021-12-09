@@ -57,13 +57,18 @@ public class StarterTeleOp extends OpMode
 {
     /** Declare OpMode members. */
     private ElapsedTime runtime = new ElapsedTime();
+    private DcMotor duckWheel = null;
     private DcMotor frontL = null;
     private DcMotor frontR = null;
     private DcMotor backL = null;
     private DcMotor backR = null;
     private CRServo intakeL = null;
     private CRServo intakeR = null;
+    private Servo intakeYL= null;
+    private Servo intakeYR = null;
+
     private Servo claw = null;
+
 
     /** Code to run ONCE when the driver hits INIT. */
     @Override
@@ -73,13 +78,17 @@ public class StarterTeleOp extends OpMode
         /** Initialize the hardware variables. Note that the strings used here as parameters
         * to 'get' must correspond to the names assigned during the robot configuration
         * step (using the FTC Robot Controller app on the phone). */
-        frontL  = hardwareMap.get(DcMotor.class, "Front Left");
-        frontR = hardwareMap.get(DcMotor.class, "Front Right");
-        backL  = hardwareMap.get(DcMotor.class, "Back Left");
-        backR = hardwareMap.get(DcMotor.class, "Back Right");
-        intakeL = hardwareMap.get(CRServo.class, "Left Intake");
-        intakeR = hardwareMap.get(CRServo.class, "Right Intake");
-        claw = hardwareMap.get(Servo.class, "claw");
+        duckWheel = hardwareMap.get(DcMotor.class, "duckWheel");
+        frontL  = hardwareMap.get(DcMotor.class, "leftFront");
+        frontR = hardwareMap.get(DcMotor.class, "rightFront");
+        backL  = hardwareMap.get(DcMotor.class, "leftRear");
+        backR = hardwareMap.get(DcMotor.class, "rightRear");
+        intakeL = hardwareMap.get(CRServo.class, "intakeL");
+        intakeR = hardwareMap.get(CRServo.class, "intakeR");
+        intakeYL = hardwareMap.get(Servo.class, "intakeLiftL");
+        intakeYR = hardwareMap.get(Servo.class, "intakeLiftR");
+
+        claw = hardwareMap.get(Servo.class, "clawServo");
 
         /* Sets the motors to run using encoders. */
         frontL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -95,6 +104,8 @@ public class StarterTeleOp extends OpMode
         backR.setDirection(DcMotor.Direction.REVERSE);
         intakeL.setDirection(CRServo.Direction.REVERSE);
         intakeR.setDirection(CRServo.Direction.FORWARD);
+        intakeYL.setDirection(Servo.Direction.FORWARD);
+        intakeYR.setDirection(Servo.Direction.FORWARD);
 
 
 
@@ -106,6 +117,8 @@ public class StarterTeleOp extends OpMode
     /** Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY. */
     @Override
     public void init_loop() {
+        intakeYL.setPosition(0);
+        intakeYR.setPosition(0);
     }
 
 
@@ -114,7 +127,9 @@ public class StarterTeleOp extends OpMode
     public void start() {
         runtime.reset();
     }
-
+    boolean clawClosed = false;
+    boolean intakeDown =false;
+    boolean duckOn = false;
 
     /** Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP. */
     @Override
@@ -126,16 +141,36 @@ public class StarterTeleOp extends OpMode
         double rightBPower;
         double intakePow;
         double clawPow;
+        double intakeLowerSpeed;
+
+
 
 
         /* Uses right stick to move forward and turn.
          * left stick to strafe.
          *  This uses basic math to combine motions and is easier to drive straight. */
-        double drive = -gamepad1.right_stick_x;
-        double turn  =  gamepad1.right_stick_y;
+        double drive = -gamepad1.right_stick_y;
+        double turn  =  gamepad1.right_stick_x;
         double strafe = gamepad1.left_stick_x;
         boolean isIntake = gamepad1.a;
+        boolean intakeChangePos = gamepad1.b;
         boolean isClaw = gamepad1.x;
+        boolean isDuck = gamepad1.right_bumper;
+        double duckPower= 0;
+
+
+
+       if (isDuck) {
+           if (!duckOn){
+               duckPower = 1;
+               duckOn = true;
+
+           }
+           else if (duckOn) {
+               duckPower = 0;
+               duckOn = false;
+           }
+       }
 
          if (strafe != 0 ) {
              /* Strafing */
@@ -157,14 +192,42 @@ public class StarterTeleOp extends OpMode
             rightBPower = 0;
         }
 
-        if (isIntake){
-            intakePow= 1 ;
+        if (intakeChangePos) {
+            if (!intakeDown) {
+                intakeYL.setPosition(0.5);
+                intakeYR.setPosition(0.5);
+                double waitTime = getRuntime();
+                if (getRuntime() - waitTime > 0.3) {
+                    intakeDown = true;
+                }
+            }
+            else if (intakeDown){
+                intakeYL.setPosition(0);
+                intakeYR.setPosition(0);
+                double waitTime = getRuntime();
+                if (getRuntime() - waitTime > 0.3){
+                intakeDown=false;
+            }}
         }
-        else {intakePow = 0;}
+
+       if (isIntake && intakeDown){
+            intakePow = 1;
+        } else {
+            intakePow = 0;
+        }
 
         if (isClaw) {
-            //pain
-            claw.setPosition(5);
+            if(clawClosed){
+                clawClosed=false;
+            }
+            else if(!clawClosed && isClaw){
+                claw.setPosition(5);
+                double waitTime = getRuntime();
+                while (getRuntime() - waitTime > 4){
+
+                }
+            }
+
 
         }
 
@@ -175,6 +238,7 @@ public class StarterTeleOp extends OpMode
         backR.setPower(rightBPower);
         intakeR.setPower(intakePow);
         intakeL.setPower(intakePow);
+        duckWheel.setPower(duckPower);
 
 
         /**  Show the elapsed game time and wheel power. */

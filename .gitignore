@@ -1,3 +1,15 @@
+# DS_Store is a hidden file created by MacOS whenever you enteer a folder using finder. Thus, we do not want them in our project
+**/.DS_Store
+
+# Android studio meta-files
+**/.idea/
+
+# Don't include setup lockfile
+.setup.lock
+
+# Don't include the already downloaded libraries
+**lib/
+
 # Built application files
 *.apk
 *.aar
@@ -5,6 +17,9 @@
 *.aab
 
 !libs/*.aar
+
+# Ignore the file that we are yelled at to ignore
+local.properties
 
 # Files for the ART/Dalvik VM
 *.dex

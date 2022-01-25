@@ -82,4 +82,3 @@ For Easy Open Cv to work you have to download the `libOpenCvAndroid.so` file and
 
 ### Lagtränare (Team coach)
  1. Rob Lingstuyl
-

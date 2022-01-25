@@ -5,7 +5,6 @@ JAVA_VERSION="$(java -version 2>&1 | grep -i version | cut -d'"' -f2 | cut -d'.'
 TARGET_JAVA_VERSION=11.0
 SDKMAN_JAVA_INSTALL=11.0.11.hs-adpt
 FORCE_JAVA=true
-FORCE_PREREQUISITES=true
 
 command_not_found() {
     echo "'$1' could not be found, or is not an executable file in your PATH."
@@ -30,23 +29,10 @@ error() {
 }
 
 setup() {
-    echo "$FORCE_PREREQUISITES"
-    progress pre "Downloading prerequisites...."
-    prerequisites
-
     progress jdk "Getting JDK $TARGET_JAVA_VERSION...."
     setup_jdk
 
     progress finish "Done with setup! Please follow the simple build instructions in the README on how to build the binary from the command line. Other wise, just click the \"Build\" button inside Android Studio."
-}
-
-prerequisites() {
-    if [[ "$FORCE_PREREQUISITES" == "true" ]]
-    then
-        ./scripts/prerequisites.sh -d
-    else
-        progress pre "Not forcing prerequisites on request, skipping step...."
-    fi
 }
 
 setup_jdk() {

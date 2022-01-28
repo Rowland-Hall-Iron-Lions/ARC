@@ -159,6 +159,9 @@ public class TeleOp_ImprovedTeleOp extends OpMode
 
 
 
+
+
+
     if (toggleFastMode) { speed = 1;} // I know the brackets are unnecessary but I like them.
 
     if (toggleSlowMode) {speed = -1;}

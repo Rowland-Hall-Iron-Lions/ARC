@@ -79,7 +79,8 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         backR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         extender.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        intakeLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        clawLift.setZeroPowerBehavior(DCMotor.ZeroPowerBehavior.BRAKE);*/
+
 
 
         /* Most robots need the motor on one side to be reversed to drive forward.
@@ -271,16 +272,20 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "front left (%.2f), front right (%.2f), back left (%.2f), back right (%.2f)", leftFPower, rightFPower,leftBPower, rightBPower);
         telemetry.addData("Intake Power", intakePow );
+<<<<<<< HEAD
         telemetry.addData("Arm Power","power %.2f encoder %d",arm.getPower(), arm.getCurrentPosition());
         telemetry.addData("Extension Power", extender.getPower());
         telemetry.addData("Intake lift","power %.2f encoder %d", intakeLift.getPower(), intakeLift.getCurrentPosition());
 
 
+=======
+        telemetry.addData("Arm Power","power (%.2f) encoder %d",arm.getPower(), arm.getCurrentPosition());
+        telemetry.addData("Extension Power", extender.getPowerFloat());
+        telemetry.addData("Intake lift","power (%.2f) encoder %d", intakeLift.getPower(), intakeLift.getCurrentPosition());
+>>>>>>> 0004593a899304ee6d9f4040fdb209a22ab32e16
     }
 
     /** Code to run ONCE after the driver hits STOP. */
     @Override
-    public void stop() {
+    public void stop() {}
 
-    }
-}

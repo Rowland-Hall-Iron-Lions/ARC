@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RUN_TO_POSITION;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RUN_USING_ENCODER;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RUN_WITHOUT_ENCODER;
+import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.STOP_AND_RESET_ENCODER;
 
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -14,11 +15,12 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class HWC {
-    public DcMotorEx frontL, frontR, backL, backR, duckWheel, arm;
-    public DcMotor extender;
-    public CRServo intakeL, intakeR;
-    public DistanceSensor dSensorR;
+    public DcMotorEx frontL, frontR, backL, backR, duckWheel, arm = null;
+    public DcMotor extender = null;
+    public CRServo intakeL, intakeR = null;
+    public DistanceSensor dSensorR = null;
     Telemetry telemetry;
+
     boolean isDriving = false;
     boolean isTurning = false;
     boolean readingDuck = false;
@@ -66,6 +68,57 @@ public class HWC {
 //        4.27(PPR) = 1 Degree
         double pprForward = distanceInCm * ONE_CM_IN_PPR;
 
+    }
+
+    public void driveAndArm(double wCounts, double wheelRPower, double wheelLPower, double aCounts){
+        int wheelCounts = 0;
+        int armCounts = 0;
+        int armPower = 20000;
+
+        frontL.setMode(STOP_AND_RESET_ENCODER);
+        frontR.setMode(STOP_AND_RESET_ENCODER);
+        backL.setMode(STOP_AND_RESET_ENCODER);
+        backR.setMode(STOP_AND_RESET_ENCODER);
+        arm.setMode(STOP_AND_RESET_ENCODER);
+
+        frontL.setMode(RUN_WITHOUT_ENCODER);
+        frontR.setMode(RUN_WITHOUT_ENCODER);
+        backL.setMode(RUN_WITHOUT_ENCODER);
+        backR.setMode(RUN_WITHOUT_ENCODER);
+        arm.setMode(RUN_WITHOUT_ENCODER);
+
+        while((Math.abs(wheelCounts) < wCounts)||( Math.abs(armCounts) < aCounts)){
+            wheelCounts = frontL.getCurrentPosition();
+            armCounts = arm.getCurrentPosition();
+
+            if(Math.abs(wheelCounts) < wCounts){
+                frontL.setPower(wheelLPower);
+                backL.setPower(wheelLPower);
+                frontR.setPower(wheelRPower);
+                backR.setPower(wheelRPower);
+
+            }
+            else {
+                frontL.setPower(0);
+                backL.setPower(0);
+                frontR.setPower(0);
+                backR.setPower(0);
+            }
+
+            if(Math.abs(armCounts) < aCounts){
+                arm.setPower(armPower);
+
+            }
+            else {
+                arm.setPower(0);
+            }
+        }
+
+        frontL.setPower(0);
+        backL.setPower(0);
+        frontR.setPower(0);
+        backR.setPower(0);
+        arm.setPower(0);
     }
 
     public void armTopLayer() {

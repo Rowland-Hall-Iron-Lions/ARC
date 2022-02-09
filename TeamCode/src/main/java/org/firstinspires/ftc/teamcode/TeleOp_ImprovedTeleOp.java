@@ -83,7 +83,7 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         backR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         extender.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        clawLift.setZeroPowerBehavior(DCMotor.ZeroPowerBehavior.BRAKE);
+/*        clawLift.setZeroPowerBehavior(DCMotor.ZeroPowerBehavior.BRAKE);*/
 
 
 
@@ -304,14 +304,8 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         }
     }
 
-    if (gamepad2.right_bumper && gamepad2.left_bumper && gamepad2.a && gamepad2.dpad_up) {
-    telemetry.addData("Bum BUm Buh Buh Bum BUh Bum... Bum bum bum", armPow);
-}
+//    if (gamepad2.right_bumper && gamepad2.left_bumper && gamepad2.a && gamepad2.dpad_up) {
+//    telemetry.addData("Bum BUm Buh Buh Bum BUh Bum... Bum bum bum", armPow);
+//}
 }
 
-    /** Code to run ONCE after the driver hits STOP. */
-    @Override
-    public void stop() {
-
-    }
-}

@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RUN_TO_POSITION;
 import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.RUN_WITHOUT_ENCODER;
+import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.STOP_AND_RESET_ENCODER;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -129,6 +130,57 @@ public class Auto_BlueWarehouse extends LinearOpMode {
             telemetry.update();
         }
     }
+
+    public void driveAndArm(double wCounts, double wheelRPower, double wheelLPower, double aCounts){
+        int wheelCounts = 0;
+        int armCounts = 0;
+        int armPower = 1;
+
+        frontL.setMode(STOP_AND_RESET_ENCODER);
+        frontR.setMode(STOP_AND_RESET_ENCODER);
+        backL.setMode(STOP_AND_RESET_ENCODER);
+        backR.setMode(STOP_AND_RESET_ENCODER);
+        arm.setMode(STOP_AND_RESET_ENCODER);
+
+        frontL.setMode(RUN_WITHOUT_ENCODER);
+        frontR.setMode(RUN_WITHOUT_ENCODER);
+        backL.setMode(RUN_WITHOUT_ENCODER);
+        backR.setMode(RUN_WITHOUT_ENCODER);
+        arm.setMode(RUN_WITHOUT_ENCODER);
+
+        while((Math.abs(wheelCounts) < wCounts)||( Math.abs(armCounts) < aCounts)){
+            wheelCounts = frontL.getCurrentPosition();
+            armCounts = arm.getCurrentPosition();
+
+            if(Math.abs(wheelCounts) < wCounts){
+                frontL.setPower(wheelLPower);
+                backL.setPower(wheelLPower);
+                frontR.setPower(wheelRPower);
+                backR.setPower(wheelRPower);
+
+            }
+            else {
+                frontL.setPower(0);
+                backL.setPower(0);
+                frontR.setPower(0);
+                backR.setPower(0);
+            }
+
+            if(Math.abs(armCounts) < aCounts){
+                arm.setPower(-1);
+
+            }
+            else {
+                arm.setPower(0);
+            }
+        }
+
+        frontL.setPower(0);
+        backL.setPower(0);
+        frontR.setPower(0);
+        backR.setPower(0);
+        arm.setPower(0);
+    }
 //
 //    public void armMiddleLayer(){
 //        arm.setTargetPosition(-12000);
@@ -200,16 +252,18 @@ public class Auto_BlueWarehouse extends LinearOpMode {
 
         waitForStart();
 
-        drive(0, 66, 500);
-        drive(280, 0, 500);
-        drive(0, 30, 500);
-        armTopLayer();
-        armReset();
-        sleep(500);
-        drive(0, -25, 500);
-        drive(250, 0, 500);
-        sleep(500);
-        drive(0, 175, 1200);
+//        drive(0, 66, 500);
+//        drive(280, 0, 500);
+//        drive(0, 30, 500);
+//        armTopLayer();
+//        armReset();
+//        sleep(500);
+//        drive(0, -25, 500);
+//        drive(250, 0, 500);
+//        sleep(500);
+//        drive(0, 175, 1200);
+
+        driveAndArm(100, 5, 5, 9000);
     }
 }
 

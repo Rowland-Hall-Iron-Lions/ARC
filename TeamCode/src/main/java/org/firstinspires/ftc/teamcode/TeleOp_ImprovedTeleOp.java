@@ -23,7 +23,9 @@ import com.qualcomm.robotcore.util.Range;
  * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list. */
 
-
+enum SpeedMode{
+    SLOW, MED, FAST
+}
 @TeleOp(name="Improved TeleOP TeleOp", group="Iterative Opmode")
 
 // @Disabled
@@ -40,9 +42,7 @@ public class TeleOp_ImprovedTeleOp extends OpMode
     private CRServo intakeR = null;
     private DcMotor extender = null;
     private DcMotor arm = null;
-    private DcMotor clawLift = null;
-    //private CRServo lIntakeLift = null;
-    //private CRServo rIntakeLift = null;
+    private DcMotor intakeLift = null;
 
 
     /** Code to run ONCE when the driver hits INIT. */
@@ -62,11 +62,7 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         intakeR = hardwareMap.get(CRServo.class, "intakeR");
         extender = hardwareMap.get(DcMotor.class, "extender");
         arm = hardwareMap.get(DcMotor.class, "arm");
-        clawLift = hardwareMap.get(DcMotor.class, " intakeLift");
-       // lIntakeLift = hardwareMap.get(CRServo.class, "intakeLiftL");
-        //rIntakeLift = hardwareMap.get(CRServo.class, "intakeLiftR");
-
-
+        intakeLift = hardwareMap.get(DcMotor.class, "intakeLift");
 
 
         /* Sets the motors to run using encoders. */
@@ -74,7 +70,7 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         frontR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        clawLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        intakeLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         /* makes the motors break on zero power */
         frontR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -83,7 +79,7 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         backR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         extender.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-/*        clawLift.setZeroPowerBehavior(DCMotor.ZeroPowerBehavior.BRAKE);*/
+        clawLift.setZeroPowerBehavior(DCMotor.ZeroPowerBehavior.BRAKE);*/
 
 
 
@@ -96,7 +92,7 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         intakeL.setDirection(CRServo.Direction.REVERSE);
         intakeR.setDirection(CRServo.Direction.FORWARD);
         duckWheel.setDirection(DcMotorSimple.Direction.REVERSE);
-        clawLift.setDirection(DcMotor.Direction.FORWARD);
+        intakeLift.setDirection(DcMotorSimple.Direction.FORWARD);
       //  lIntakeLift.setDirection(CRServo.Direction.REVERSE);
         //rIntakeLift.setDirection(CRServo.Direction.FORWARD);
 
@@ -125,10 +121,10 @@ public class TeleOp_ImprovedTeleOp extends OpMode
     boolean duckOn = false;
     double armPow = 0;
     double liftPow = 0;
-    int speed = 0;
+    SpeedMode speed = SpeedMode.MED;
     double slowSpeed = 0.25;
     double normalSpeed = 0.69;
-
+    double intakeLiftPow = 0;
 
 
     /** Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP. */
@@ -141,11 +137,6 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         double rightBPower;
         double intakePow;
 
-
-
-
-
-
         /* More variable setup*/
         double drive = -gamepad1.right_stick_y;
         double turn  =  gamepad1.left_stick_x * 0.3;
@@ -157,17 +148,14 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         double duckPower= 0;
         double extension = gamepad2.right_stick_y;
         double armMove = gamepad2.left_stick_y;
-        boolean toggleFastMode = gamepad1.dpad_up;
-        boolean toggleSlowMode = gamepad1.dpad_down;
         boolean liftIntakeUp = gamepad2.dpad_up;
         boolean liftIntakeDown = gamepad2.dpad_down;
 
+        if(gamepad1.dpad_up)
+            speed = SpeedMode.FAST;
+        if(gamepad1.dpad_down)
+            speed = SpeedMode.SLOW;
 
-
-
-    if (toggleFastMode) { speed = 1;} // I know the brackets are unnecessary but I like them.
-
-    if (toggleSlowMode) {speed = -1;}
 
         if (isIntakeA !=0) {
             intakePow = isIntakeA;
@@ -178,24 +166,6 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         else intakePow = 0;
 
 
-        if (liftIntakeUp) {
-            liftPow = 1;
-        }
-        else if (liftIntakeDown) {
-            liftPow = -1;
-        }
-
-        else liftPow = 0;
-
-       /* if (extension == 0){
-            armPow=0.001;
-
-
-        }
-
-
-        else armPow= armMove * 0.5;
-        */
         if (isDuckR) {
             if (!duckOn){
                 duckPower = 0.5;
@@ -220,7 +190,17 @@ public class TeleOp_ImprovedTeleOp extends OpMode
             }
         }
 
+        if (liftIntakeUp) {
+            intakeLiftPow = 0.75;
+        }
 
+        else if (liftIntakeDown) {
+            intakeLiftPow = -0.75;
+        }
+
+        else{
+            intakeLiftPow = 0;
+        }
 
          if (drive != 0 || turn != 0) {
             leftFPower = Range.clip(drive + turn, -1.0, 1.0);
@@ -248,7 +228,7 @@ public class TeleOp_ImprovedTeleOp extends OpMode
 
 
 
-        if (speed == 1) {
+        if (speed == SpeedMode.FAST) {
 
             frontL.setPower(leftFPower);
             backL.setPower(leftBPower);
@@ -259,12 +239,10 @@ public class TeleOp_ImprovedTeleOp extends OpMode
             duckWheel.setPower(duckPower);
             extender.setPower(extension);
             arm.setPower(armMove * 1);
-            clawLift.setPower(liftPow);
-            //lIntakeLift.setPower(liftPow);
-            //rIntakeLift.setPower(liftPow);
+            intakeLift.setPower(intakeLiftPow);
         }
 
-        else if (speed == -1) {
+        else if (speed == SpeedMode.SLOW) {
             frontL.setPower(leftFPower * slowSpeed);
             backL.setPower(leftBPower * slowSpeed);
             frontR.setPower(rightFPower * slowSpeed);
@@ -274,9 +252,8 @@ public class TeleOp_ImprovedTeleOp extends OpMode
             duckWheel.setPower(duckPower);
             extender.setPower(extension);
             arm.setPower(armMove * 1);
-            clawLift.setPower(liftPow);
+            intakeLift.setPower(intakeLiftPow);
         }
-
         else {
             frontL.setPower(leftFPower * normalSpeed);
             backL.setPower(leftBPower * normalSpeed);
@@ -287,7 +264,7 @@ public class TeleOp_ImprovedTeleOp extends OpMode
             duckWheel.setPower(duckPower);
             extender.setPower(extension);
             arm.setPower(armMove * 1);
-            clawLift.setPower(liftPow);
+            intakeLift.setPower(intakeLiftPow);
         }
 
 
@@ -295,17 +272,12 @@ public class TeleOp_ImprovedTeleOp extends OpMode
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Motors", "front left (%.2f), front right (%.2f), back left (%.2f), back right (%.2f)", leftFPower, rightFPower,leftBPower, rightBPower);
         telemetry.addData("Intake Power", intakePow );
-        telemetry.addData("Arm Power", armMove);
-        telemetry.addData("Extension Power", extension);
-        telemetry.addData("Intake lift", liftPow);
-
-        if (gamepad1.right_bumper && gamepad1.left_bumper && gamepad1.a && gamepad1.dpad_up) {
-            telemetry.addData("When the imposter is sus...", armPow);
-        }
+        telemetry.addData("Arm Power","power (%.2f) encoder %d",arm.getPower(), arm.getCurrentPosition());
+        telemetry.addData("Extension Power", extender.getPowerFloat());
+        telemetry.addData("Intake lift","power (%.2f) encoder %d", intakeLift.getPower(), intakeLift.getCurrentPosition());
     }
 
-//    if (gamepad2.right_bumper && gamepad2.left_bumper && gamepad2.a && gamepad2.dpad_up) {
-//    telemetry.addData("Bum BUm Buh Buh Bum BUh Bum... Bum bum bum", armPow);
-//}
-}
+    /** Code to run ONCE after the driver hits STOP. */
+    @Override
+    public void stop() {}
 

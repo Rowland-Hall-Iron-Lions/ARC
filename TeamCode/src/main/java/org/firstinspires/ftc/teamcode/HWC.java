@@ -8,8 +8,10 @@ import static com.qualcomm.robotcore.hardware.DcMotor.RunMode.STOP_AND_RESET_ENC
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
@@ -19,6 +21,8 @@ public class HWC {
     public DcMotor extender = null;
     public CRServo intakeL, intakeR = null;
     public DistanceSensor dSensorR = null;
+    private DcMotor intakeLift = null;
+    private ElapsedTime runtime = new ElapsedTime();
     Telemetry telemetry;
 
     boolean isDriving = false;
@@ -44,7 +48,7 @@ public class HWC {
         intakeL = hardwareMap.get(CRServo.class, "intakeL");
         intakeR = hardwareMap.get(CRServo.class, "intakeR");
         dSensorR = hardwareMap.get(DistanceSensor.class, "dSensorR");
-        //clawLift = hardwareMap.get(DcMotor.class, " intakeLift");
+        intakeLift = hardwareMap.get(DcMotor.class, "intakeLift");
 
 
         frontL.setDirection(DcMotorEx.Direction.FORWARD);
@@ -55,6 +59,10 @@ public class HWC {
         arm.setDirection(DcMotorEx.Direction.FORWARD);
         intakeL.setDirection(CRServo.Direction.REVERSE);
         intakeR.setDirection(CRServo.Direction.FORWARD);
+        intakeLift.setDirection(DcMotorEx.Direction.FORWARD);
+
+
+
 
         frontR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         frontL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -62,7 +70,7 @@ public class HWC {
         backR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         extender.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-       // clawLift.setZeroPowerBehavior(DCMotor.ZeroPowerBehavior.BRAKE);
+        intakeLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         frontL.setMode(RUN_USING_ENCODER);
         frontR.setMode(RUN_USING_ENCODER);
@@ -70,8 +78,9 @@ public class HWC {
         backR.setMode(RUN_USING_ENCODER);
         arm.setMode(RUN_USING_ENCODER);
         extender.setMode(RUN_WITHOUT_ENCODER);
-        //clawLift.setMode(RUN_USING_ENCODER);
+        intakeLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
+
 
     public void drive(double directionInDegrees, double distanceInCm, double wheelPower){
 //      384.5(PPR) = ~50cm = ~20in
